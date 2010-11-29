@@ -1,0 +1,13 @@
+TAGS
+tags
+*.pyc
+*.pyo
+*.beam
+\#*
+*~
+*.swp
+*.swn
+*.swo
+cscope.*
+*.a
+*.o
