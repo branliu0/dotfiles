@@ -61,6 +61,7 @@ alias lal='ls -Al'
 alias lla='ls -Al'
 alias bb='screen -xRR'
 alias vi='vim'
+alias gs='git status'
 
 export EDITOR=vim
 
