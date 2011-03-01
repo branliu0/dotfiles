@@ -107,6 +107,9 @@ nnoremap A g$a
 noremap <C-Y> 5<C-Y>
 noremap <C-E> 5<C-E>
 
+" map control backspace to delete the previous word
+imap <C-BS> <C-W>
+
 " Use * register (clipboard) as default for y/d/p/x commands
 "set cb+=unnamed
 
