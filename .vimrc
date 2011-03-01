@@ -57,7 +57,7 @@ let b:tt2_syn_tags = '\[% %] <!-- -->'
 
 " TeX
 let g:tex_flavor='latex'
-let g:Tex_DefaultTargetFormat = 'pdf'
+let g:Tex_DefaultTargetFormat = 'dvi'
 let g:Tex_MultipleCompileFormats = 'dvi,pdf'
 "let g:Tex_ViewRuleComplete_dvi = 'evince $*.dvi &'
 "let g:Tex_ViewRuleComplete_ps  = 'evince $*.ps &'
@@ -132,10 +132,11 @@ if has("gui_running")
 	set columns=130
 
 	if has("gui_gtk2")
-        set guifont=DejaVu\ Sans\ Mono\ 9
+		set guifont=Inconsolata\ 10
 	elseif has("gui_win32")
-		set guifont=DejaVu_Sans_Mono:h9
+		set guifont=Consolas:h10:cANSI
 	endif
+	
 else
 " TERMINAL ===========
 	" for default color scheme
