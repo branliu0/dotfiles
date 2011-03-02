@@ -40,6 +40,8 @@ set number
 set autochdir
 set hidden				" Keep buffers around after closing them
 
+set shell=/bin/bash
+
 "set spell
 
 set ttimeoutlen=100
