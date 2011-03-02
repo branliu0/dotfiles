@@ -63,6 +63,7 @@ alias bb='screen -xRR'
 alias vi='vim'
 alias gs='git status'
 alias rm='rm -i'
+alias tmux='tmux -2'
 
 export EDITOR=vim
 
