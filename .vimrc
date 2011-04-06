@@ -112,6 +112,11 @@ noremap <C-E> 5<C-E>
 " map control backspace to delete the previous word
 imap <C-BS> <C-W>
 
+" Ctrl-M to run current file in PHP
+autocmd FileType php noremap <C-M> :w!<CR>:!/usr/bin/env php %<CR>
+" Ctrl-M to lint current PHP file
+autocmd FileType php noremap <C-L> :!/usr/bin/env php -l %<CR>
+
 " Use * register (clipboard) as default for y/d/p/x commands
 "set cb+=unnamed
 
