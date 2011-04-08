@@ -112,6 +112,10 @@ noremap <C-E> 5<C-E>
 " map control backspace to delete the previous word
 imap <C-BS> <C-W>
 
+" shortcuts for taglist
+map <F4> :TlistToggle<CR>
+map <F8> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+
 " Ctrl-M to run current file in PHP
 autocmd FileType php noremap <C-M> :w!<CR>:!/usr/bin/env php %<CR>
 " Ctrl-M to lint current PHP file
