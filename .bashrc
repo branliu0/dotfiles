@@ -67,7 +67,7 @@ alias tmux='tmux -2'
 
 export EDITOR=vim
 
-export PATH=~/bin:~/opt/bin:$PATH
+export PATH=/usr/local/bin:~/bin:~/opt/bin:$PATH
 
 if [[ -e ~/.bashrc.local ]]; then
 	source ~/.bashrc.local
