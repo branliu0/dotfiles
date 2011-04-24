@@ -40,8 +40,8 @@ function set_prompt {
 	REV_PROMPT='$(__git_ps1)'
 
 	PS1="
-$c_1 \u@\h:\w $REV_PROMPT
-$c_2 `date +%D` \t \$$c_0 "
+$c_1\u@\h:\w $REV_PROMPT
+$c_2`date +%D` \t \$$c_0 "
 }
 
 set_prompt
