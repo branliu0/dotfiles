@@ -59,11 +59,13 @@ alias ll='ls -l'
 alias la='ls -A'
 alias lal='ls -Al'
 alias lla='ls -Al'
-alias bb='screen -xRR'
+
 alias vi='vim'
 alias gs='git status'
+alias ga='git add'
 alias rm='rm -i'
 alias tmux='tmux -2'
+alias ack='ack-grep'
 
 export EDITOR=vim
 
