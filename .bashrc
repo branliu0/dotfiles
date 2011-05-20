@@ -1,7 +1,7 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 
 # If not running interactively, don't do anything
-[ -z "$PS1" ] && return
+if [ -n "$PS1" ] ; then
 
 export HISTCONTROL=ignoreboth # ignoredups and ignorespace
 shopt -s histappend
@@ -61,8 +61,10 @@ alias lal='ls -Al'
 alias lla='ls -Al'
 
 alias vi='vim'
+alias g='git'
 alias gs='git status'
 alias ga='git add'
+alias gc='git commit'
 alias rm='rm -i'
 alias tmux='tmux -2'
 alias ack='ack-grep'
@@ -77,6 +79,8 @@ fi
 
 source $HOME/.bash/completion.bash
 
+[[ -s "/home/brandonkliu/.rvm/scripts/rvm" ]] && source "/home/brandonkliu/.rvm/scripts/rvm" 
+
 #PS1='\[\033k\033\\\]' # this little bit of insanity lets screen read the title of the running program
 #export PS1=$PS1"$MG\u@\h$MB$REV_PROMPT $MW\w$R> $N"
 
@@ -87,3 +91,5 @@ function git_diff() {
 function gsl() {
   git log --oneline --color $* | head
 }
+
+fi
