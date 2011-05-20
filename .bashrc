@@ -79,8 +79,6 @@ fi
 
 source $HOME/.bash/completion.bash
 
-[[ -s "/home/brandonkliu/.rvm/scripts/rvm" ]] && source "/home/brandonkliu/.rvm/scripts/rvm" 
-
 #PS1='\[\033k\033\\\]' # this little bit of insanity lets screen read the title of the running program
 #export PS1=$PS1"$MG\u@\h$MB$REV_PROMPT $MW\w$R> $N"
 
