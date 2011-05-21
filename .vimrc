@@ -33,8 +33,9 @@ endif
 set mouse=a
 set nobackup
 set writebackup
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
+set expandtab
 set number
 
 set autochdir
