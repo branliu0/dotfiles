@@ -69,6 +69,7 @@ alias gd='git diff'
 alias rm='rm -i'
 alias tmux='tmux -2'
 alias ack='ack-grep'
+alias rs='rspec spec'
 
 export EDITOR=vim
 

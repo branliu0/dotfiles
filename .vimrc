@@ -1,5 +1,3 @@
-" David's Vim preferences.
-
 set nocompatible
 behave xterm
 
@@ -37,6 +35,7 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 set number
+set clipboard=unnamed " Work with OSX/Windows native clipboard
 
 set autochdir
 set hidden				" Keep buffers around after closing them
