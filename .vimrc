@@ -1,5 +1,3 @@
-" David's Vim preferences.
-
 set nocompatible
 behave xterm
 
@@ -31,21 +29,48 @@ else					" If autocommands are not available
 endif
 
 set mouse=a
-set nobackup
-set writebackup
+
+" Use a common directory for backups and swp files
+" Create it if it doesn't exist
+silent execute '!mkdir -p ~/.vim_backups'
+set backupdir=~/.vim_backups//
+set directory=~/.vim_backups//
+
+set ignorecase
+set smartcase
+
 set tabstop=2
 set shiftwidth=2
 set expandtab
 set number
+set wildmode=list:longest  " bash-like command line tab completion
+set shortmess=atI
+set autowrite " Automatically save before commands like :next
+set showcmd   " Display incomplete commands
+set cursorline " highlight cursor line
+set listchars=tab:>\ ,trail:•,extends:>,precedes:<,nbsp:+
+set list     " show trailing whitespace and tabs
 
-set autochdir
+set splitbelow
+set splitright
+
+set pastetoggle=<F7>
+
+map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+map <Leader>s :split <C-R>=expand("%:p:h") . "/" <CR>
+map <Leader>v :vsplit <C-R>=expand("%:p:h") . "/" <CR>
+map <Leader>t :tabnew <C-R>=expand("%:p:h") . "/" <CR>
+
+" set autochdir
 set hidden				" Keep buffers around after closing them
+
+let loaded_taglist = 'no' "Disable ctags on OSX
 
 set shell=/bin/bash
 
 "set spell
 
-set ttimeoutlen=100
+set ttimeoutlen=50
 
 " FILETYPES ==========
 "au BufNewFile,BufRead *.mhtml set ft=mason
@@ -55,6 +80,7 @@ au BufNewFile,BufRead *.cgi set ft=perl
 au BufNewFile,BufRead *.tt,*.tt2 set ft=tt2html ts=2 sts=2 sw=2 expandtab
 au BufNewFile,BufRead *.php,*.phpt,*.htm,*.html set ts=2 sts=2 sw=2 expandtab
 au BufNewFile,BufRead *.phpt set ft=php
+au BufNewFile,BufRead *.py set ft=python noexpandtab
 
 let b:tt2_syn_tags = '\[% %] <!-- -->'
 
