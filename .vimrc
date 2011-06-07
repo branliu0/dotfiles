@@ -80,7 +80,7 @@ au BufNewFile,BufRead *.cgi set ft=perl
 au BufNewFile,BufRead *.tt,*.tt2 set ft=tt2html ts=2 sts=2 sw=2 expandtab
 au BufNewFile,BufRead *.php,*.phpt,*.htm,*.html set ts=2 sts=2 sw=2 expandtab
 au BufNewFile,BufRead *.phpt set ft=php
-au BufNewFile,BufRead *.py set ft=python noexpandtab
+au BufNewFile,BufRead *.py set noexpandtab
 
 let b:tt2_syn_tags = '\[% %] <!-- -->'
 
@@ -153,6 +153,7 @@ autocmd FileType php noremap <C-L> :!/usr/bin/env php -l %<CR>
 
 " Word wrap lines
 set formatoptions=1
+set wrap
 set linebreak
 
 " Default fold method
@@ -216,8 +217,8 @@ fu! SlowTerm(on)
 		set hls
 	endif
 endfunction
-map <Leader>s :call SlowTerm(1)<CR>
-map <Leader>S :call SlowTerm(0)<CR>
+" map <Leader>s :call SlowTerm(1)<CR>
+" map <Leader>S :call SlowTerm(0)<CR>
 
 set scrolljump=3
 set scrolloff=5

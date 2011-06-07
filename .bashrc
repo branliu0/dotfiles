@@ -50,8 +50,13 @@ set_prompt
 
 # enable color support of ls and also add handy aliases
 if [ "$TERM" != "dumb" ]; then
+  if [[ "$OSTYPE" =~ "darwin" ]]; then
+    alias ls='ls -G'
+    LSCOLORS='gxfxcxdxbxegedabagacad'
+  else
     eval "`dircolors -b`"
     alias ls='ls --color=auto'
+  fi
 fi
 
 # some more ls aliases
