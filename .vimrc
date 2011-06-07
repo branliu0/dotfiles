@@ -50,6 +50,7 @@ set showcmd   " Display incomplete commands
 set cursorline " highlight cursor line
 set listchars=tab:>\ ,trail:•,extends:>,precedes:<,nbsp:+
 set list     " show trailing whitespace and tabs
+set clipboard=unnamed " Work with OSX/Windows native clipboard
 
 set splitbelow
 set splitright
