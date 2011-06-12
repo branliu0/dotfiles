@@ -2,8 +2,12 @@
 ### Please borrow freely from this config, but make sure to change
 ### the [user] section to your info
 
+[user]
+	name = Brandon Liu
+	email = brandon.k.liu@gmail.com
+
 [core]
-	excludesfile = /home/dliu/GIT_EXCLUDE
+  # excludesfile = /home/dliu/GIT_EXCLUDE
 
 ### colors are meant for a dark terminal
 [color]
@@ -36,7 +40,6 @@
 	amend = commit --amend
 	incr = commit --amend -C HEAD
 	plus = commit --amend -a -C HEAD
-      	castle = !git push -f ssh://sandcastle.facebook.com/data/git/tfb HEAD:refs/users/`whoami`
 	gr = grep -i
 	ci = commit
 	di = diff
@@ -55,11 +58,6 @@
 	followparent = true
         rmdir = true
 
-[commit]
-	template = /home/eletuchy/admin/scripts/templates/git-commit-template.txt
-[user]
-	name = dliu
-	email = david.c.liu@facebook.com
 [log]
 	date = relative
 [blame]
@@ -67,7 +65,6 @@
 [diff]
 	renames = true
 	mnemonicprefix = true
-	#external = /home/eletuchy/bin/git/colordiff-wrapper.sh
 	tool = vimdiff
 	#external = git_diff_wrapper
 [pager]

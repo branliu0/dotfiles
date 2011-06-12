@@ -1,6 +1,7 @@
 set nocompatible
 behave xterm
 
+set encoding=utf8
 set backspace=indent,eol,start				" Backspace over everything.
 set history=50
 set ruler
@@ -29,25 +30,51 @@ else					" If autocommands are not available
 endif
 
 set mouse=a
-set nobackup
-set writebackup
+
+" Use a common directory for backups and swp files
+" Create it if it doesn't exist
+silent execute '!mkdir -p ~/.vim_backups'
+set backupdir=~/.vim_backups//
+set directory=~/.vim_backups//
+
+set ignorecase
+set smartcase
+
 set tabstop=2
 set shiftwidth=2
 set expandtab
 set number
+set wildmode=list:longest  " bash-like command line tab completion
+set shortmess=atI
+set autowrite " Automatically save before commands like :next
+set showcmd   " Display incomplete commands
+set cursorline " highlight cursor line
+set listchars=tab:>\ ,trail:•,extends:>,precedes:<,nbsp:+
+set list     " show trailing whitespace and tabs
 set clipboard=unnamed " Work with OSX/Windows native clipboard
 set timeoutlen=250 " Time to wait after ESC
 
-set autochdir
+set splitbelow
+set splitright
+
+set pastetoggle=<F7>
+
+map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+map <Leader>s :split <C-R>=expand("%:p:h") . "/" <CR>
+map <Leader>v :vsplit <C-R>=expand("%:p:h") . "/" <CR>
+map <Leader>t :tabnew <C-R>=expand("%:p:h") . "/" <CR>
+
+" set autochdir
 set hidden				" Keep buffers around after closing them
 
 set directory=~/tmp/swp "Where the temporary files go
+let loaded_taglist = 'no' "Disable ctags on OSX
 
 set shell=/bin/bash
 
 "set spell
 
-set ttimeoutlen=100
+set ttimeoutlen=50
 
 " FILETYPES ==========
 "au BufNewFile,BufRead *.mhtml set ft=mason
@@ -57,6 +84,7 @@ au BufNewFile,BufRead *.cgi set ft=perl
 au BufNewFile,BufRead *.tt,*.tt2 set ft=tt2html ts=2 sts=2 sw=2 expandtab
 au BufNewFile,BufRead *.php,*.phpt,*.htm,*.html set ts=2 sts=2 sw=2 expandtab
 au BufNewFile,BufRead *.phpt set ft=php
+au BufNewFile,BufRead *.py set noexpandtab
 
 let b:tt2_syn_tags = '\[% %] <!-- -->'
 
@@ -129,6 +157,7 @@ autocmd FileType php noremap <C-L> :!/usr/bin/env php -l %<CR>
 
 " Word wrap lines
 set formatoptions=1
+set wrap
 set linebreak
 
 " Default fold method
@@ -192,8 +221,8 @@ fu! SlowTerm(on)
 		set hls
 	endif
 endfunction
-map <Leader>s :call SlowTerm(1)<CR>
-map <Leader>S :call SlowTerm(0)<CR>
+" map <Leader>s :call SlowTerm(1)<CR>
+" map <Leader>S :call SlowTerm(0)<CR>
 
 set scrolljump=3
 set scrolloff=5
