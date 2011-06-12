@@ -36,9 +36,12 @@ set shiftwidth=2
 set expandtab
 set number
 set clipboard=unnamed " Work with OSX/Windows native clipboard
+set timeoutlen=250 " Time to wait after ESC
 
 set autochdir
 set hidden				" Keep buffers around after closing them
+
+set directory=~/tmp/swp "Where the temporary files go
 
 set shell=/bin/bash
 
