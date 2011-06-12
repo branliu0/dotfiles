@@ -1,6 +1,7 @@
 set nocompatible
 behave xterm
 
+set encoding=utf8
 set backspace=indent,eol,start				" Backspace over everything.
 set history=50
 set ruler
