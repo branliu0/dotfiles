@@ -48,7 +48,7 @@ set_prompt
 
 # Alias definitions.
 
-# enable color support of ls and also add handy aliases
+# enable color support of ls
 if [ "$TERM" != "dumb" ]; then
   if [[ "$OSTYPE" =~ "darwin" ]]; then
     alias ls='ls -G'
@@ -80,14 +80,14 @@ export EDITOR=vim
 
 export PATH=/usr/local/bin:~/bin:~/opt/bin:$PATH
 
+# Turn on colors for grep
+export GREP_COLORS = auto
+
 if [[ -e ~/.bashrc.local ]]; then
 	source ~/.bashrc.local
 fi
 
 source $HOME/.bash/completion.bash
-
-#PS1='\[\033k\033\\\]' # this little bit of insanity lets screen read the title of the running program
-#export PS1=$PS1"$MG\u@\h$MB$REV_PROMPT $MW\w$R> $N"
 
 function git_diff() {
   git diff --no-ext-diff -w "$@" | vim -R -
