@@ -1,7 +1,7 @@
 set nocompatible
 behave xterm
 
-set encoding=utf8
+set encoding=utf-8
 set backspace=indent,eol,start				" Backspace over everything.
 set history=50
 set ruler
@@ -34,8 +34,8 @@ set mouse=a
 " Use a common directory for backups and swp files
 " Create it if it doesn't exist
 silent execute '!mkdir -p ~/.vim_backups'
-set backupdir=~/.vim_backups//
-set directory=~/.vim_backups//
+set backupdir=~/.vim_backups/
+set directory=~/.vim_backups/
 
 set ignorecase
 set smartcase
@@ -67,7 +67,6 @@ map <Leader>t :tabnew <C-R>=expand("%:p:h") . "/" <CR>
 " set autochdir
 set hidden				" Keep buffers around after closing them
 
-set directory=~/tmp/swp "Where the temporary files go
 let loaded_taglist = 'no' "Disable ctags on OSX
 
 set shell=/bin/bash
@@ -112,9 +111,6 @@ map gb :bnext<cr>
 map gB :bprev<cr>
 
 " MAPPINGS ===========
-
-map <Leader>T :%!perltidy -q<CR>
-map <Leader>t :!perltidy -q<CR>
 
 " Tab to go forward in history, Shift-Tab to go backward.
 nmap <Tab> <C-I>
