@@ -81,7 +81,7 @@ export EDITOR=vim
 export PATH=/usr/local/bin:~/bin:~/opt/bin:$PATH
 
 # Turn on colors for grep
-export GREP_COLORS = auto
+export GREP_COLORS=auto
 
 if [[ -e ~/.bashrc.local ]]; then
 	source ~/.bashrc.local
