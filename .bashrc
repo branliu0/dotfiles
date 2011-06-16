@@ -72,6 +72,7 @@ alias ga='git add'
 alias gc='git commit'
 alias gd='git diff'
 alias rm='rm -i'
+alias cp='cp -i'
 alias tmux='tmux -2'
 alias ack='ack-grep'
 alias rs='rspec spec'
@@ -81,7 +82,7 @@ export EDITOR=vim
 export PATH=/usr/local/bin:~/bin:~/opt/bin:$PATH
 
 # Turn on colors for grep
-export GREP_COLORS = auto
+export GREP_COLORS=auto
 
 if [[ -e ~/.bashrc.local ]]; then
 	source ~/.bashrc.local
