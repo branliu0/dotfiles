@@ -53,6 +53,7 @@
 	sh = !git-sh
 	# "garbage-collect branches" whose tips have been merged into trunk
 	gcbr = !git branch --no-color --no-track --merged trunk | sed 's/[ *]*//' | grep -v master | grep -v '(no branch)' | xargs -n1 git branch -D || exit 0
+	pg = push origin HEAD:refs/for/master
 
 [svn]
 	followparent = true

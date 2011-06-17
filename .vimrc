@@ -51,7 +51,6 @@ set showcmd   " Display incomplete commands
 set cursorline " highlight cursor line
 set listchars=tab:>\ ,trail:•,extends:>,precedes:<,nbsp:+
 set list     " show trailing whitespace and tabs
-set clipboard=unnamed " Work with OSX/Windows native clipboard
 set timeoutlen=250 " Time to wait after ESC
 
 set splitbelow
@@ -139,6 +138,10 @@ noremap <C-E> 5<C-E>
 " map control backspace to delete the previous word
 imap <C-BS> <C-W>
 
+" make it easier to append and prepend
+nnoremap EA Ea
+nnoremap BI Bi
+
 " shortcuts for taglist
 map <F4> :TlistToggle<CR>
 map <F8> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
@@ -177,6 +180,8 @@ if has("gui_running")
 		set guifont=Inconsolata\ 10
 	elseif has("gui_win32")
 		set guifont=Consolas:h10:cANSI
+  else
+    set guifont=Consolas:h12
 	endif
 	
 else
