@@ -44,12 +44,13 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 set number
-set wildmode=list:longest  " bash-like command line tab completion
+set wildmenu
+set wildmode=list:longest,full  " bash-like command line tab completion
 set shortmess=atI
 set autowrite " Automatically save before commands like :next
 set showcmd   " Display incomplete commands
 set cursorline " highlight cursor line
-set listchars=tab:>\ ,trail:•,extends:>,precedes:<,nbsp:+
+set listchars=tab:\|\ ,trail:•,extends:>,precedes:<,nbsp:+
 set list     " show trailing whitespace and tabs
 set timeoutlen=250 " Time to wait after ESC
 
@@ -62,6 +63,9 @@ map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 map <Leader>s :split <C-R>=expand("%:p:h") . "/" <CR>
 map <Leader>v :vsplit <C-R>=expand("%:p:h") . "/" <CR>
 map <Leader>t :tabnew <C-R>=expand("%:p:h") . "/" <CR>
+
+" Autoclosing
+inoremap {<CR> {<CR>}<ESC>O
 
 " set autochdir
 set hidden				" Keep buffers around after closing them
@@ -172,7 +176,8 @@ if has("gui_running")
 " GUI ================
 	"colors sienna
 	"colors zenburn
-	colors lucius
+	"colors lucius
+  colors jellybeans
 	set lines=50
 	set columns=130
 
@@ -201,7 +206,8 @@ else
 	endif
 
 	"colors zenburn
-	colors lucius
+	"colors lucius
+  colors jellybeans
 endif
 
 "hi NonText cterm=NONE ctermfg=NONE
