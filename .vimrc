@@ -184,11 +184,11 @@ if has("gui_running")
   set columns=130
 
   if has("gui_gtk2")
-    set guifont=Inconsolata\ 10
+    set guifont=Monaco\ 12
   elseif has("gui_win32")
-    set guifont=Consolas:h10:cANSI
+    set guifont=Monaco:h10:cANSI
   else
-    set guifont=Consolas:h12
+    set guifont=Monaco:h12
   endif
   
 else
