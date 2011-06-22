@@ -2,12 +2,12 @@ set nocompatible
 behave xterm
 
 set encoding=utf-8
-set backspace=indent,eol,start				" Backspace over everything.
+set backspace=indent,eol,start        " Backspace over everything.
 set history=50
 set ruler
-set showcmd									" display commands as they are typed
-set incsearch								" search as you type
-set viminfo='10,\"100,:20,%,n~/.viminfo		" Use viminfo
+set showcmd                  " display commands as they are typed
+set incsearch                " search as you type
+set viminfo='10,\"100,:20,%,n~/.viminfo    " Use viminfo
 
 " When in GUI or terminal has colors, use syntax and search highlighting.
 if &t_Co > 2 || has("gui_running")
@@ -15,18 +15,18 @@ if &t_Co > 2 || has("gui_running")
   set hlsearch
 endif
 
-if has("autocmd")		" If compiled with support for autocommands
-	filetype plugin indent on
+if has("autocmd")    " If compiled with support for autocommands
+  filetype plugin indent on
 
-	autocmd FileType text setlocal textwidth=78
+  autocmd FileType text setlocal textwidth=78
 
-	" Always jump to last cursor position.
-	autocmd BufReadPost *
-			\ if line("'\"") > 0 && line("'\"") <= line("$") |
-			\   exe "normal g`\"" |
-			\ endif
-else					" If autocommands are not available
-	set autoindent		" always set autoindenting on
+  " Always jump to last cursor position.
+  autocmd BufReadPost *
+      \ if line("'\"") > 0 && line("'\"") <= line("$") |
+      \   exe "normal g`\"" |
+      \ endif
+else          " If autocommands are not available
+  set autoindent    " always set autoindenting on
 endif
 
 set mouse=a
@@ -68,7 +68,7 @@ map <Leader>t :tabnew <C-R>=expand("%:p:h") . "/" <CR>
 inoremap {<CR> {<CR>}<ESC>O
 
 " set autochdir
-set hidden				" Keep buffers around after closing them
+set hidden        " Keep buffers around after closing them
 
 let loaded_taglist = 'no' "Disable ctags on OSX
 
@@ -152,8 +152,10 @@ map <F8> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
 " Ctrl-M to run current file in PHP
 autocmd FileType php noremap <C-M> :w!<CR>:!/usr/bin/env php %<CR>
-" Ctrl-M to lint current PHP file
+" Ctrl-L to lint current PHP file
 autocmd FileType php noremap <C-L> :!/usr/bin/env php -l %<CR>
+" Ctrl-L to lint current Ruby file
+autocmd FileType ruby noremap <C-L> :!/usr/bin/env ruby -c %<CR>
 
 " Use * register (clipboard) as default for y/d/p/x commands
 "set cb+=unnamed
@@ -174,59 +176,59 @@ set foldlevel=20
 
 if has("gui_running")
 " GUI ================
-	"colors sienna
-	"colors zenburn
-	"colors lucius
+  "colors sienna
+  "colors zenburn
+  "colors lucius
   colors jellybeans
-	set lines=50
-	set columns=130
+  set lines=50
+  set columns=130
 
-	if has("gui_gtk2")
-		set guifont=Inconsolata\ 10
-	elseif has("gui_win32")
-		set guifont=Consolas:h10:cANSI
+  if has("gui_gtk2")
+    set guifont=Inconsolata\ 10
+  elseif has("gui_win32")
+    set guifont=Consolas:h10:cANSI
   else
     set guifont=Consolas:h12
-	endif
-	
+  endif
+  
 else
 " TERMINAL ===========
-	" for default color scheme
-	set background=dark
-	
-	if $SSH_CONNECTION == ""	" Local terminal
-		set t_Co=256
-	else						" Remote terminal
-		"set t_Co=16
-		set t_Co=256
-	endif
+  " for default color scheme
+  set background=dark
+  
+  if $SSH_CONNECTION == ""  " Local terminal
+    set t_Co=256
+  else            " Remote terminal
+    "set t_Co=16
+    set t_Co=256
+  endif
 
-	if &term == "screen-bce"	" Running in screen
-		set ttymouse=xterm2
-	endif
+  if &term == "screen-bce"  " Running in screen
+    set ttymouse=xterm2
+  endif
 
-	"colors zenburn
-	"colors lucius
+  "colors zenburn
+  "colors lucius
   colors jellybeans
 endif
 
 "hi NonText cterm=NONE ctermfg=NONE
 fu! SlowTerm(on)
-	if a:on
-		"set scrolljump=5
-		set t_Co=2
-		set noshowcmd
-		set noruler
-		set noincsearch
-		set nohls
-	else
-		"set scrolljump=1
-		set t_Co=256
-		set showcmd
-		set ruler
-		set incsearch
-		set hls
-	endif
+  if a:on
+    "set scrolljump=5
+    set t_Co=2
+    set noshowcmd
+    set noruler
+    set noincsearch
+    set nohls
+  else
+    "set scrolljump=1
+    set t_Co=256
+    set showcmd
+    set ruler
+    set incsearch
+    set hls
+  endif
 endfunction
 " map <Leader>s :call SlowTerm(1)<CR>
 " map <Leader>S :call SlowTerm(0)<CR>
