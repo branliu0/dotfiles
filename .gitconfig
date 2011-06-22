@@ -8,6 +8,7 @@
 
 [core]
   # excludesfile = /home/dliu/GIT_EXCLUDE
+  editor = /usr/bin/vim
 
 ### colors are meant for a dark terminal
 [color]
