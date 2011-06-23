@@ -7,7 +7,6 @@
 	email = brandon.k.liu@gmail.com
 
 [core]
-  # excludesfile = /home/dliu/GIT_EXCLUDE
   editor = /usr/bin/vim
 	excludesfile = ~/.cvsignore
 
@@ -70,8 +69,6 @@
 	mnemonicprefix = true
 	tool = vimdiff
 	#external = git_diff_wrapper
-[pager]
-	#diff =
 [apply]
 	whitespace = strip
 [merge]
