@@ -15,6 +15,7 @@ set ruler
 set showcmd                  " display commands as they are typed
 set incsearch                " search as you type
 set viminfo='10,\"100,:20,%,n~/.viminfo    " Use viminfo
+set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P " taken from :help fugitive-statusline
 
 " When in GUI or terminal has colors, use syntax and search highlighting.
 if &t_Co > 2 || has("gui_running")
@@ -105,6 +106,7 @@ au BufNewFile,BufRead *.tt,*.tt2 set ft=tt2html ts=2 sts=2 sw=2 expandtab
 au BufNewFile,BufRead *.php,*.phpt,*.htm,*.html set ts=2 sts=2 sw=2 expandtab
 au BufNewFile,BufRead *.phpt set ft=php
 au BufNewFile,BufRead *.py set noexpandtab
+au BufReadPost fugitive://* set bufhidden=delete
 
 let b:tt2_syn_tags = '\[% %] <!-- -->'
 
