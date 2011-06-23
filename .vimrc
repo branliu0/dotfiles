@@ -71,6 +71,14 @@ map <Leader>s :split <C-R>=expand("%:p:h") . "/" <CR>
 map <Leader>v :vsplit <C-R>=expand("%:p:h") . "/" <CR>
 map <Leader>t :tabnew <C-R>=expand("%:p:h") . "/" <CR>
 
+" Tabular.vim plugin mappings
+if exists(":Tabularize")
+  nmap <Leader>a= :Tabularize /=<CR>
+  vmap <Leader>a= :Tabularize /=<CR>
+  nmap <Leader>a: :Tabularize /:<CR>
+  vmap <Leader>a: :Tabularize /:<CR>
+endif
+
 " Autoclosing
 inoremap {<CR> {<CR>}<ESC>O
 
