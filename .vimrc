@@ -66,6 +66,9 @@ set splitright
 
 set pastetoggle=<F7>
 
+" Make it easy to edit .vimrc anytime!
+map <Leader>; :tabe $MYVIMRC<CR>
+
 map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 map <Leader>s :split <C-R>=expand("%:p:h") . "/" <CR>
 map <Leader>v :vsplit <C-R>=expand("%:p:h") . "/" <CR>
