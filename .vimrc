@@ -1,3 +1,9 @@
+" Brandon Liu's .vimrc
+" Feel free to use!
+
+" Necessary to get pathogen working
+call pathogen#runtime_append_all_bundles()
+
 set nocompatible
 behave xterm
 
