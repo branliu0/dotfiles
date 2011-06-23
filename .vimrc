@@ -3,6 +3,7 @@
 
 " Necessary to get pathogen working
 call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
 
 set nocompatible
 behave xterm
