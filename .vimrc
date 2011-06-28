@@ -88,10 +88,7 @@ endif
 " Autoclosing
 inoremap {<CR> {<CR>}<ESC>O
 
-" These functions don't work on OSX sometimes
-if !has("mac")
-  set autochdir
-else
+if has("mac")
   let loaded_taglist = 'no' "Disable ctags on OSX
 endif
 
