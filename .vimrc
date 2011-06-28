@@ -45,22 +45,24 @@ silent execute '!mkdir -p ~/.vim_backups'
 set backupdir=~/.vim_backups/
 set directory=~/.vim_backups/
 
-set ignorecase
-set smartcase
-
-set tabstop=2
-set shiftwidth=2
+set autowrite " Automatically save before commands like :next
+set cursorline " highlight cursor line
 set expandtab
+set hidden        " Keep buffers around after closing them
+set ignorecase
+set laststatus=2 " Always show the status line
+set list     " show trailing whitespace and tabs
+set listchars=tab:\|\ ,trail:•,extends:>,precedes:<,nbsp:+
 set number
+set shiftwidth=2
+set shortmess=atI
+set showcmd   " Display incomplete commands
+set smartcase
+set tabstop=2
+set timeoutlen=250 " Time to wait after ESC
+set visualbell
 set wildmenu
 set wildmode=list:longest,full  " bash-like command line tab completion
-set shortmess=atI
-set autowrite " Automatically save before commands like :next
-set showcmd   " Display incomplete commands
-set cursorline " highlight cursor line
-set listchars=tab:\|\ ,trail:•,extends:>,precedes:<,nbsp:+
-set list     " show trailing whitespace and tabs
-set timeoutlen=250 " Time to wait after ESC
 
 set splitbelow
 set splitright
@@ -86,15 +88,16 @@ endif
 " Autoclosing
 inoremap {<CR> {<CR>}<ESC>O
 
-" set autochdir
-set hidden        " Keep buffers around after closing them
-
-let loaded_taglist = 'no' "Disable ctags on OSX
+" These functions don't work on OSX sometimes
+if !has("mac")
+  set autochdir
+else
+  let loaded_taglist = 'no' "Disable ctags on OSX
+endif
 
 set shell=/bin/bash
 
-"set spell
-
+set timeoutlen=1200
 set ttimeoutlen=50
 
 " FILETYPES ==========
@@ -166,6 +169,30 @@ imap <C-BS> <C-W>
 nnoremap EA Ea
 nnoremap BI Bi
 
+" While shifting indent, stay in visual mode
+vnoremap < <gv
+vnoremap > >gv
+vnoremap <Space> I<Space><Esc>gv
+
+" Emacs style mappings
+inoremap <C-A> <C-O>^
+cnoremap <C-A> <Home>
+
+" If at end of a line of spaces, delete back to the previous line
+" Otherwise, <Left>
+inoremap <silent> <C-B> <C-R>=getline('.')=~'^\s*$'&&col('.')>strlen(getline('.'))?"0\<Lt>C-D>\<Lt>Esc>kJs":"\<Lt>Left>"<CR>
+cnoremap <C-B> <Left>
+
+" If at end of line, decrease indent, else <Del>
+inoremap <silent> <C-D> <C-R>=col('.')>strlen(getline('.'))?"\<Lt>C-D>":"\<Lt>Del>"<CR>
+cnoremap <C-D> <Del>
+
+inoremap <C-E> <End>
+
+" If at end of line, fix indent, else <Right>
+inoremap <silent> <C-F> <C-R>=col('.')>strlen(getline('.'))?"\<Lt>C-F>":"\<Lt>Right>"<CR>
+cnoremap <C-F> <Right>
+
 " shortcuts for taglist
 map <F4> :TlistToggle<CR>
 map <F8> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
@@ -190,9 +217,21 @@ set foldmethod=syntax
 "set foldlevel=20
 set foldlevel=20
 
-"nmap <Leader>b :let g:zenburn_high_Contrast=1<CR>:colors zenburn<CR>
-"nmap <Leader>B :unlet g:zenburn_high_Contrast<CR>:colors zenburn<CR>
-"let g:zenburn_high_Contrast=1
+function! OpenURL(url)
+  if has("win32")
+    exe "!start cmd /cstart /b ".a:url.""
+  elseif $DISPLAY !~ '^\w'
+    exe "silent !sensible-browser \"".a:url."\""
+  else
+    exe "silent !sensible-browser -T \"".a:url."\""
+  endif
+  redraw!
+endfunction
+command! -nargs=1 OpenURL :call OpenURL(<q-args>)
+" open URL under cursor in browser
+noremap gb :OpenURL <cfile><CR>
+noremap gG :OpenURL http://google.com/search?q=<cword><CR>
+noremap gW :OpenURL http://en.wikipedia.org/wiki/Special:Search?search=<cword><CR>
 
 if has("gui_running")
 " GUI ================
