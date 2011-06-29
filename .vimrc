@@ -129,7 +129,7 @@ let g:NERDTreeWinPos = 'right'
 "map <Leader>e :MiniBufExplorer<cr>
 "map <Leader>e :MiniBufExplorer<cr>
 map <Leader>n :NERDTreeFind<cr>
-map <Leader>N :NERDTree<cr>
+map <Leader>N :NERDTreeToggle<cr>
 map gb :bnext<cr>
 map gB :bprev<cr>
 
@@ -161,6 +161,12 @@ noremap <C-E> 5<C-E>
 
 " map control backspace to delete the previous word
 imap <C-BS> <C-W>
+
+" Make it easier to move between windows
+nmap <C-H> <C-W>h
+nmap <C-J> <C-W>j
+nmap <C-K> <C-W>k
+nmap <C-L> <C-W>l
 
 " make it easier to append and prepend
 nnoremap EA Ea
@@ -196,13 +202,13 @@ map <F8> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
 " Ctrl-M to run current file in PHP
 autocmd FileType php noremap <C-M> :w!<CR>:!/usr/bin/env php %<CR>
-" Ctrl-L to lint current PHP file
-autocmd FileType php noremap <C-L> :!/usr/bin/env php -l %<CR>
-" Ctrl-L to lint current Ruby file
-autocmd FileType ruby noremap <C-L> :!/usr/bin/env ruby -c %<CR>
+" Ctrl-; to lint current PHP file
+autocmd FileType php noremap <C-;> :!/usr/bin/env php -l %<CR>
+" Ctrl-; to lint current Ruby file
+autocmd FileType ruby noremap <C-;> :!/usr/bin/env ruby -c %<CR>
 
 " Use * register (clipboard) as default for y/d/p/x commands
-"set cb+=unnamed
+" set clipboard=unnamed
 
 " Word wrap lines
 set formatoptions=1
