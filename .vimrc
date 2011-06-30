@@ -167,6 +167,10 @@ nmap <C-H> <C-W>h
 nmap <C-J> <C-W>j
 nmap <C-K> <C-W>k
 nmap <C-L> <C-W>l
+imap <C-H> <Esc><C-W>h
+imap <C-J> <Esc><C-W>j
+imap <C-K> <Esc><C-W>k
+imap <C-L> <Esc><C-W>l
 
 " make it easier to append and prepend
 nnoremap EA Ea
