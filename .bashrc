@@ -77,6 +77,8 @@ alias tmux='tmux -2'
 alias ack='ack-grep'
 alias rs='rspec spec'
 
+alias tunnel='ssh -C2qTnN -D 8080 brandonkliu@brandonkliu.com'
+
 export EDITOR=vim
 
 export PATH=/usr/local/bin:~/bin:~/opt/bin:$PATH
