@@ -94,7 +94,7 @@ endif
 
 set shell=/bin/bash
 
-set timeoutlen=1200
+set timeoutlen=600
 set ttimeoutlen=50
 
 " FILETYPES ==========
@@ -106,6 +106,7 @@ au BufNewFile,BufRead *.tt,*.tt2 set ft=tt2html ts=2 sts=2 sw=2 expandtab
 au BufNewFile,BufRead *.php,*.phpt,*.htm,*.html set ts=2 sts=2 sw=2 expandtab
 au BufNewFile,BufRead *.phpt set ft=php
 au BufNewFile,BufRead *.py set noexpandtab
+au BufNewFile,BufRead *.otl set nolist
 au BufReadPost fugitive://* set bufhidden=delete
 
 let b:tt2_syn_tags = '\[% %] <!-- -->'
@@ -176,6 +177,9 @@ imap <C-L> <Esc><C-W>l
 nnoremap EA Ea
 nnoremap BI Bi
 
+" Make it easier to paste in insert mode
+inoremap ppp <Esc>pa
+
 " While shifting indent, stay in visual mode
 vnoremap < <gv
 vnoremap > >gv
@@ -199,6 +203,19 @@ inoremap <C-E> <End>
 " If at end of line, fix indent, else <Right>
 inoremap <silent> <C-F> <C-R>=col('.')>strlen(getline('.'))?"\<Lt>C-F>":"\<Lt>Right>"<CR>
 cnoremap <C-F> <Right>
+
+" Make tab switching easier on macs
+if has("mac")
+	nmap <D-1> 1gt
+	nmap <D-2> 2gt
+	nmap <D-3> 3gt
+	nmap <D-4> 4gt
+	nmap <D-5> 5gt
+	nmap <D-6> 6gt
+	nmap <D-7> 7gt
+	nmap <D-8> 8gt
+	nmap <D-9> 9gt
+endif
 
 " shortcuts for taglist
 map <F4> :TlistToggle<CR>
