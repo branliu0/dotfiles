@@ -75,7 +75,7 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias tmux='tmux -2'
 alias ack='ack-grep'
-alias rs='rspec spec'
+alias rs='rake spec'
 
 alias tunnel='ssh -C2qTnN -D 8080 brandonkliu@brandonkliu.com'
 
