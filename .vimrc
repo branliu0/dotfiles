@@ -223,10 +223,12 @@ map <F8> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
 " Ctrl-M to run current file in PHP
 autocmd FileType php noremap <C-M> :w!<CR>:!/usr/bin/env php %<CR>
-" Ctrl-; to lint current PHP file
-autocmd FileType php noremap <C-;> :!/usr/bin/env php -l %<CR>
-" Ctrl-; to lint current Ruby file
-autocmd FileType ruby noremap <C-;> :!/usr/bin/env ruby -c %<CR>
+" Ctrl-N to lint current PHP file
+autocmd FileType php noremap <C-N> :!/usr/bin/env php -l %<CR>
+" Ctrl-M to run current file in Ruby
+autocmd FileType ruby noremap <C-M> :w!<CR>:!/usr/bin/env ruby %<CR>
+" Ctrl-N to lint current Ruby file
+autocmd FileType ruby noremap <C-N> :!/usr/bin/env ruby -c %<CR>
 
 " Use * register (clipboard) as default for y/d/p/x commands
 " set clipboard=unnamed
