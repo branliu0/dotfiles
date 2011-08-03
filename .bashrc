@@ -18,6 +18,7 @@ function set_prompt {
 	local c_1="\[\033[1;34m\]"
 	local c_2="\[\033[0;36m\]"
 	local c_0="\[\033[0;39m\]"
+  local c_3="\[\033[00;32m\]" # Green
 
 	#function set_screen_title {
 		#THE_PATH=`pwd | sed "s/^\(.\+\)\///"`
@@ -41,7 +42,7 @@ function set_prompt {
 
 	PS1="
 $c_1\u@\h:\w $REV_PROMPT
-$c_2`date +%D` \t \$$c_0 "
+$c_2`date +%D` \t $c_3${?} $c_2\$$c_0 "
 }
 
 set_prompt
