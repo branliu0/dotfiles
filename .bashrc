@@ -12,6 +12,14 @@ shopt -s checkwinsize
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(lesspipe)"
 
+function __rvm_prompt {
+  local gemset=$(echo $GEM_HOME | awk -F'@' '{print $2}')
+  [ "$gemset" != "" ] && gemset="@$gemset"
+  local version=$(echo $MY_RUBY_HOME | awk -F'-' '{print $2}')
+  local full="$version$gemset"
+  echo $full
+}
+
 set_prompt () {
   if [ $? -ne 0 ]; then
     ERR='($?) '
@@ -54,7 +62,7 @@ set_prompt () {
 	GIT_PS1_SHOWDIRTYSTATE=1
 
 	PS1="
-$EMB\u@\h:\w ${R}$ERR$M\$(__git_ps1)
+$EMB\u@\h:\w ${R}$ERR$R[\$(__rvm_prompt)]$M\$(__git_ps1)
 $C`date +%D` \t \$$NONE "
 }
 
