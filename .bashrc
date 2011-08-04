@@ -12,40 +12,53 @@ shopt -s checkwinsize
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(lesspipe)"
 
-function set_prompt {
-	# fancy colors
-	local blk="\342\226\210"
-	local c_1="\[\033[1;34m\]"
-	local c_2="\[\033[0;36m\]"
-	local c_0="\[\033[0;39m\]"
-  local c_3="\[\033[00;32m\]" # Green
+set_prompt () {
+  if [ $? -ne 0 ]; then
+    ERR='($?) '
+  else
+    ERR=""
+  fi
 
-	#function set_screen_title {
-		#THE_PATH=`pwd | sed "s/^\(.\+\)\///"`
-		## set tab title
-		#echo -ne \\033k${THE_PATH}\\033\\
-		## set hardstatus
-		##echo -ne \\033]0\;${THE_PATH}\\a
-	#}
-	#if [ "$TERM" == "screen-bce" ]; then
-		#PROMPT_COMMAND='set_screen_title'
-	#fi
+  local NONE="\[\033[0m\]"    # unsets color to term's fg color
+
+  # regular colors
+  local K="\[\033[0;30m\]"    # black
+  local R="\[\033[0;31m\]"    # red
+  local G="\[\033[0;32m\]"    # green
+  local Y="\[\033[0;33m\]"    # yellow
+  local B="\[\033[0;34m\]"    # blue
+  local M="\[\033[0;35m\]"    # magenta
+  local C="\[\033[0;36m\]"    # cyan
+  local W="\[\033[0;37m\]"    # white
+
+  # emphasized (bolded) colors
+  local EMK="\[\033[1;30m\]"
+  local EMR="\[\033[1;31m\]"
+  local EMG="\[\033[1;32m\]"
+  local EMY="\[\033[1;33m\]"
+  local EMB="\[\033[1;34m\]"
+  local EMM="\[\033[1;35m\]"
+  local EMC="\[\033[1;36m\]"
+  local EMW="\[\033[1;37m\]"
+
+  # background colors
+  local BGK="\[\033[40m\]"
+  local BGR="\[\033[41m\]"
+  local BGG="\[\033[42m\]"
+  local BGY="\[\033[43m\]"
+  local BGB="\[\033[44m\]"
+  local BGM="\[\033[45m\]"
+  local BGC="\[\033[46m\]"
+  local BGW="\[\033[47m\]"
 
 	GIT_PS1_SHOWDIRTYSTATE=1
-	#REV_PROMPT=\
-	#'$(if [ -e .svn ]; then echo " r$(svn info | grep Revision | cut -d\  -f2)"
-	   #elif [ $(expr match `pwd` "/home") -gt 0 ]; then
-		 #__git_ps1;
-	   #fi
-	#)'
-	REV_PROMPT='$(__git_ps1)'
 
 	PS1="
-$c_1\u@\h:\w $REV_PROMPT
-$c_2`date +%D` \t $c_3${?} $c_2\$$c_0 "
+$EMB\u@\h:\w ${R}$ERR$M\$(__git_ps1)
+$C`date +%D` \t \$$NONE "
 }
 
-set_prompt
+PROMPT_COMMAND=set_prompt
 
 # Alias definitions.
 
