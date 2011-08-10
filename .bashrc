@@ -98,6 +98,8 @@ alias cp='cp -i'
 alias tmux='tmux -2'
 alias ack='ack-grep'
 alias rs='rake spec'
+alias ..='cd ..'
+alias mvimcp='open -a Macvim .'
 
 alias tunnel='ssh -C2qTnN -D 8080 brandonkliu@brandonkliu.com'
 
@@ -120,6 +122,11 @@ function git_diff() {
 
 function gsl() {
   git log --oneline --color $* | head
+}
+
+function mkcd() {
+  dir="$1"
+  mkdir -p $dir && cd $dir
 }
 
 fi
