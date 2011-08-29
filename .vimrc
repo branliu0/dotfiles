@@ -88,6 +88,8 @@ endif
 " Autoclosing
 inoremap {<CR> {<CR>}<ESC>O
 
+map <Leader>c :%s/ \+$//<CR>
+
 if has("mac")
   let loaded_taglist = 'no' "Disable ctags on OSX
 endif
@@ -178,7 +180,7 @@ nnoremap EA Ea
 nnoremap BI Bi
 
 " Make it easier to paste in insert mode
-inoremap ppp <Esc>pa
+inoremap PPP <Esc>pa
 
 " While shifting indent, stay in visual mode
 vnoremap < <gv
