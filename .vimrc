@@ -88,7 +88,7 @@ endif
 " Autoclosing
 inoremap {<CR> {<CR>}<ESC>O
 
-map <Leader>c :%s/ \+$//<CR>
+map <Leader>c :%s/\s\+$//<CR>
 
 if has("mac")
   let loaded_taglist = 'no' "Disable ctags on OSX
