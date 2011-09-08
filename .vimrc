@@ -88,7 +88,7 @@ endif
 " Autoclosing
 inoremap {<CR> {<CR>}<ESC>O
 
-map <Leader>c :%s/\s\+$//<CR>
+map <Leader>c :%s/\s\+$//<CR>:nohl<CR>
 
 if has("mac")
   let loaded_taglist = 'no' "Disable ctags on OSX
@@ -108,7 +108,7 @@ au BufNewFile,BufRead *.tt,*.tt2 set ft=tt2html ts=2 sts=2 sw=2 expandtab
 au BufNewFile,BufRead *.php,*.phpt,*.htm,*.html set ts=2 sts=2 sw=2 expandtab
 au BufNewFile,BufRead *.phpt set ft=php
 au BufNewFile,BufRead *.py set noexpandtab
-au BufNewFile,BufRead *.otl set nolist spell
+au BufNewFile,BufRead *.otl set ft=otl nolist noexpandtab
 au BufReadPost fugitive://* set bufhidden=delete
 
 let b:tt2_syn_tags = '\[% %] <!-- -->'
