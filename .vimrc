@@ -142,6 +142,10 @@ map gB :bprev<cr>
 nmap <Tab> <C-I>
 nmap <S-Tab> <C-O>
 
+" Make it easy to get back to normal mode:
+inoremap jk <ESC>
+inoremap kj <ESC>
+
 " ZZ = save&quit, ZX = save
 map ZX :w<CR>
 map ZA :qa<CR>
