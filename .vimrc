@@ -115,7 +115,7 @@ let b:tt2_syn_tags = '\[% %] <!-- -->'
 
 " TeX
 let g:tex_flavor='latex'
-let g:Tex_DefaultTargetFormat = 'dvi'
+let g:Tex_DefaultTargetFormat = 'pdf'
 let g:Tex_MultipleCompileFormats = 'dvi,pdf'
 "let g:Tex_ViewRuleComplete_dvi = 'evince $*.dvi &'
 "let g:Tex_ViewRuleComplete_ps  = 'evince $*.ps &'
