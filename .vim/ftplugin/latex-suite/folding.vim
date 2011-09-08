@@ -2,7 +2,6 @@
 " 	     File: folding.vim
 "      Author: Srinath Avadhanula
 "      		   modifications/additions by Zhang Linbo
-" 	      CVS: $Id: folding.vim 997 2006-03-20 09:45:45Z srinathava $
 "     Created: Tue Apr 23 05:00 PM 2002 PST
 " 
 "  Description: functions to interact with Syntaxfolds.vim
@@ -30,7 +29,7 @@ function! Tex_SetFoldOptions()
 		call MakeTexFolds(0)
 	endif
 
-	let s:ml = exists('g:mapleader') ? g:mapleader : "\\"
+	let s:ml = '<Leader>'
 
 	call Tex_MakeMap(s:ml."rf", "<Plug>Tex_RefreshFolds", 'n', '<silent> <buffer>')
 
@@ -54,7 +53,7 @@ function! Tex_FoldSections(lst, endpat)
 	if s =~ '%%fakesection'
 		let s = '^\s*' . s
 	else
-		let s = '^\s*\\' . s . '\W'
+		let s = '^\s*\\' . s . '\W\|^\s*%%fake' . s
 	endif
 	let endpat = s . '\|' . a:endpat
 	if i > 0
@@ -119,7 +118,7 @@ function! MakeTexFolds(force)
 	endif
 	
     if !exists('g:Tex_FoldedSections')
-		let g:Tex_FoldedSections = 'part,chapter,section,%%fakesection,'
+		let g:Tex_FoldedSections = 'part,chapter,section,'
 								\. 'subsection,subsubsection,paragraph'
 	endif
 
@@ -284,7 +283,7 @@ function! MakeTexFolds(force)
 					" In other words, the pattern is safe, but not exact.
 					call AddSyntaxFoldItem('^\s*\\'.s.'{[^{}]*$','^[^}]*}',0,0)
 				else
-					call AddSyntaxFoldItem('^\s*\\begin{'.s,'^\s*\\end{'.s,0,0)
+					call AddSyntaxFoldItem('^\s*\\begin{'.s,'\(^\|\s\)\s*\\end{'.s,0,0)
 				endif
 			endif
 		endwhile
@@ -362,7 +361,9 @@ function! TexFoldTextFunction()
 				end
 			elseif getline(i) =~ '\\label'
 				let label = matchstr(getline(i), '\\label{\zs.*')
-				let label = substitute(label, '\zs}[^}]*$', '', '')
+				" :FIXME: this does not work when \label contains a
+				" newline or a }-character
+				let label = substitute(label, '\([^}]*\)}.*$', '\1', '')
 			end
 
 			let i = i + 1
@@ -375,7 +376,7 @@ function! TexFoldTextFunction()
 		end
 
 		let retText = matchstr(ftxto, '^[^:]*').': '.header.
-						\ ' ('.label.') : '.caption
+						\ ' ('.label.'): '.caption
 		return leadingSpace.retText
 
 	elseif getline(v:foldstart) =~ '^%' && getline(v:foldstart) !~ '^%%fake'

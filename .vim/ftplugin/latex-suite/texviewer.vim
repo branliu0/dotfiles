@@ -5,7 +5,6 @@
 " Description: make a viewer for various purposes: \cite{, \ref{
 "     License: Vim Charityware License
 "              Part of vim-latexSuite: http://vim-latex.sourceforge.net
-"         CVS: $Id: texviewer.vim 1004 2006-03-25 08:40:15Z srinathava $
 " ============================================================================
 " Tex_SetTexViewerMaps: sets maps for this ftplugin {{{
 function! Tex_SetTexViewerMaps()
@@ -44,10 +43,10 @@ function! Tex_Complete(what, where)
 	" Change to the directory of the file being edited before running all the
 	" :grep commands. We will change back to the original directory after we
 	" finish with the grep.
-	let s:origdir = getcwd()
-	cd %:p:h
+	let s:origdir = fnameescape(getcwd())
+	exe 'cd '.fnameescape(expand('%:p:h'))
 
-	let s:pos = line('.').' | normal! '.virtcol('.').'|'
+	let s:pos = Tex_GetPos()
 
 	unlet! s:type
 	unlet! s:typeoption
@@ -58,7 +57,6 @@ function! Tex_Complete(what, where)
 
 	if a:where == "text"
 		" What to do after <F9> depending on context
-		let s:curfile = expand("%:p")
 		let s:curline = strpart(getline('.'), 0, col('.'))
 		let s:prefix = matchstr(s:curline, '.*{\zs.\{-}\(}\|$\)')
 		" a command is of the type
@@ -69,7 +67,7 @@ function! Tex_Complete(what, where)
 		" from which we need to extract
 		" 	s:type = 'psfig'
 		" 	s:typeoption = '[option=value]'
-		let pattern = '.*\\\(\w\{-}\)\(\[.\{-}\]\)\?{\(\S\+\)\?$'
+		let pattern = '.*\\\(\w\{-}\)\(\[.\{-}\]\)*{\([^ [\]\t]\+\)\?$'
 		if s:curline =~ pattern
 			let s:type = substitute(s:curline, pattern, '\1', 'e')
 			let s:typeoption = substitute(s:curline, pattern, '\2', 'e')
@@ -89,7 +87,7 @@ function! Tex_Complete(what, where)
 
 			elseif Tex_GetVarValue('Tex_ProjectSourceFiles') != ''
 				call Tex_Debug('Tex_Complete: searching for \\labels in all Tex_ProjectSourceFiles', 'view')
-				call Tex_CD(Tex_GetMainFileName(':p:h'))
+				exec 'cd '.fnameescape(Tex_GetMainFileName(':p:h'))
 				call Tex_Grep('\\label{'.s:prefix, Tex_GetVarValue('Tex_ProjectSourceFiles'))
 				call <SID>Tex_SetupCWindow()
 
@@ -110,16 +108,16 @@ function! Tex_Complete(what, where)
 			if has('python') && Tex_GetVarValue('Tex_UsePython') 
 				\ && Tex_GetVarValue('Tex_UseCiteCompletionVer2') == 1
 
-				call Tex_CD(s:origdir)
+				exe 'cd '.s:origdir
 				silent! call Tex_StartCiteCompletion()
 
 			elseif Tex_GetVarValue('Tex_UseJabref') == 1
 
-				call Tex_CD(s:origdir)
+				exe 'cd '.s:origdir
 				let g:Remote_WaitingForCite = 1
 				let citation = input('Enter citation from jabref (<enter> to leave blank): ')
 				let g:Remote_WaitingForCite = 0
-				call Tex_CompleteWord(citation)
+				call Tex_CompleteWord(citation, strlen(s:prefix))
 			
 			else
 				" grep! nothing % 
@@ -147,25 +145,33 @@ function! Tex_Complete(what, where)
 			call Tex_SetupFileCompletion(
 				\ '', 
 				\ '^\.\\|\.tex$\\|\.bib$\\|\.bbl$\\|\.zip$\\|\.gz$', 
-				\ 'noext')
+				\ 'noext', 
+				\ Tex_GetVarValue('Tex_ImageDir', '.'), 
+				\ Tex_GetVarValue('Tex_ImageDir', ''))
 			
 		elseif exists("s:type") && s:type == 'bibliography'
 			call Tex_SetupFileCompletion(
 				\ '\.b..$',
 				\ '',
-				\ 'noext')
+				\ 'noext',
+				\ '.', 
+				\ '')
 
 		elseif exists("s:type") && s:type =~ 'include\(only\)\='
 			call Tex_SetupFileCompletion(
 				\ '\.t..$', 
 				\ '',
-				\ 'noext')
+				\ 'noext',
+				\ '.', 
+				\ '')
 
 		elseif exists("s:type") && s:type == 'input'
 			call Tex_SetupFileCompletion(
 				\ '', 
 				\ '',
-				\ 'ext')
+				\ 'ext',
+				\ '.', 
+				\ '')
 
 		elseif exists('s:type') && exists("g:Tex_completion_".s:type)
 			call <SID>Tex_CompleteRefCiteCustom('plugin_'.s:type)
@@ -173,14 +179,8 @@ function! Tex_Complete(what, where)
 		else
 			let s:word = expand('<cword>')
 			if s:word == ''
-				if col('.') == strlen(getline('.'))
-					startinsert!
-					return
-				else
-					normal! l
-					startinsert
-					return
-				endif
+				call Tex_SwitchToInsertMode()
+				return
 			endif
 			call Tex_Debug("silent! grep! ".Tex_EscapeForGrep('\<'.s:word.'\>')." *.tex", 'view')
 			call Tex_Grep('\<'.s:word.'\>', '*.tex')
@@ -211,23 +211,26 @@ endfunction
 " Description: This function is meant to be called when the user press
 " 	``<enter>`` in one of the [Error List] windows which shows the list of
 " 	matches. completeword is the rest of the word which needs to be inserted.
-function! Tex_CompleteWord(completeword)
-	exe s:pos
+" 	prefixlength characters are deleted before completeword is inserted
+function! Tex_CompleteWord(completeword, prefixlength)
+	call Tex_SetPos(s:pos)
 
 	" Complete word, check if add closing }
-	exe 'normal! a'.a:completeword."\<Esc>"
+	if a:prefixlength > 0
+		if a:prefixlength > 1
+			exe 'normal! '.(a:prefixlength-1).'h'
+		endif
+		exe 'normal! '.a:prefixlength.'s'.a:completeword."\<Esc>"
+	else
+		exe 'normal! a'.a:completeword."\<Esc>"
+	endif
 
 	if getline('.')[col('.')-1] !~ '{' && getline('.')[col('.')] !~ '}'
 		exe "normal! a}\<Esc>"
 	endif
 	
 	" Return to Insert mode
-	if col('.') == strlen(getline('.'))
-		startinsert!
-	else
-		normal! l
-		startinsert
-	endif
+	call Tex_SwitchToInsertMode()
 endfunction " }}}
 
 " ==============================================================================
@@ -235,26 +238,30 @@ endfunction " }}}
 " ============================================================================== 
 " Tex_SetupFileCompletion:  {{{
 " Description: 
-function! Tex_SetupFileCompletion(accept, reject, ext)
+function! Tex_SetupFileCompletion(accept, reject, ext, dir, root)
 	call FB_SetVar('FB_AllowRegexp', a:accept)
 	call FB_SetVar('FB_RejectRegexp', a:reject)
 	call FB_SetVar('FB_CallBackFunction', 'Tex_CompleteFileName')
-	call FB_SetVar('FB_CallBackFunctionArgs', '"'.a:ext.'"')
+	call FB_SetVar('FB_CallBackFunctionArgs', '"'.a:ext.'", "'.a:root.'"')
 
-	call FB_OpenFileBrowser('.')
+	call FB_OpenFileBrowser(a:dir)
 endfunction " }}}
 " Tex_CompleteFileName:  {{{
 " Description: 
-function! Tex_CompleteFileName(filename, ext)
+function! Tex_CompleteFileName(filename, ext, root)
+	let root = (a:root == '' ? Tex_GetMainFileName(':p:h') : a:root)
+
 	call Tex_Debug('+Tex_CompleteFileName: getting filename '.a:filename, 'view')
 
 	if a:ext == 'noext'
 		let completeword = fnamemodify(a:filename, ':r')
+	else
+		let completeword = a:filename
 	endif
-	let completeword = Tex_RelPath(completeword, Tex_GetMainFileName(':p:h'))
+	let completeword = Tex_RelPath(completeword, root)
 
 	call Tex_Debug(":Tex_CompleteFileName: completing with ".completeword, "view")
-	call Tex_CompleteWord(completeword)
+	call Tex_CompleteWord(completeword, strlen(s:prefix))
 endfunction " }}}
 " Tex_Common: common part of strings {{{
 function! s:Tex_Common(path1, path2)
@@ -369,27 +376,30 @@ endfunction " }}}
 "
 function! s:Tex_CompleteRefCiteCustom(type)
 
+	let prefixlength=strlen(s:prefix)
 	if a:type =~ 'cite'
-		if getline('.') =~ '\\bibitem{'
-			let bibkey = matchstr(getline('.'), '\\bibitem{\zs.\{-}\ze}')
+		if getline('.') =~ '\\bibitem\s*{'
+			let bibkey = matchstr(getline('.'), '\\bibitem\s*{\zs.\{-}\ze}')
 		else
-			let bibkey = matchstr(getline('.'), '{\zs.\{-}\ze\(,\|$\)')
+			let bibkey = matchstr(getline('.'), '\\bibitem\s*\[.\{-}\]\s*{\zs.\{-}\ze}')
 		endif
-		let completeword = strpart(bibkey, strlen(s:prefix))
+		let completeword = bibkey
 
 	elseif a:type =~ 'ref'
 		let label = matchstr(getline('.'), '\\label{\zs.\{-}\ze}')
-		let completeword = strpart(label, strlen(s:prefix))
+		let completeword = label
 
 	elseif a:type =~ '^plugin_'
 		let type = substitute(a:type, '^plugin_', '', '')
 		let completeword = <SID>Tex_DoCompletion(type)
+		" use old behaviour for plugins because of backward compatibility
+		let prefixlength=0
 		
 	endif
 
 	call Tex_CloseSmallWindows()
 	call Tex_Debug(":Tex_CompleteRefCiteCustom: completing with ".completeword, "view")
-	call Tex_CompleteWord(completeword)
+	call Tex_CompleteWord(completeword, prefixlength)
 endfunction " }}}
 " Tex_SyncPreviewWindow: synchronize quickfix and preview window {{{
 " Description: Usually quickfix engine takes care about most of these things
@@ -427,12 +437,7 @@ function! s:Tex_SyncPreviewWindow()
 		if exists("s:prefix")
 			echomsg 'No bibkey, label or word beginning with "'.s:prefix.'"'
 		endif
-		if col('.') == strlen(getline('.'))
-			startinsert!
-		else
-			normal! l
-			startinsert
-		endif
+		call Tex_SwitchToInsertMode()
 		let v:errmsg = ''
 		call Tex_Debug('Tex_SyncPreviewWindow: got error E32, no matches found, quitting', 'view')
 		return 0
@@ -466,7 +471,7 @@ function! Tex_CloseSmallWindows()
 	exe s:winnum.' wincmd w'
 	pclose!
 	cclose
-	exe s:pos
+	call Tex_SetPos(s:pos)
 endfunction " }}}
 " Tex_GoToLocation: Go to chosen location {{{
 " Description: Get number of current line and go to this number
@@ -504,16 +509,16 @@ function! Tex_GrepHelper(prefix, what)
 	if mainfname == expand('%:p')
 		split
 	else
-		exec 'split '.Tex_EscapeSpaces(mainfname)
+		exec 'split '.fnameescape(mainfname)
 	endif
 
-	let pos = line('.').'| normal! '.virtcol('.').'|'
+	let pos = Tex_GetPos()
 	if a:what =~ 'bib'
 		call Tex_ScanFileForCite(a:prefix)
 	else
 		call Tex_ScanFileForLabels(a:prefix)
 	endif
-	exec pos
+	call Tex_SetPos(pos)
 
 	q
 	let &path = _path
@@ -604,9 +609,9 @@ function! Tex_ScanFileForCite(prefix)
 		let foundCiteFile = 1
 
 		split
-		lcd %:p:h
+		exec 'lcd'.fnameescape(expand('%:p:h'))
 		call Tex_Debug("silent! grepadd! ".Tex_EscapeForGrep('\\bibitem{'.a:prefix)." %", 'view')
-		call Tex_Grepadd('\\bibitem{'.a:prefix, "%")
+		call Tex_Grepadd('\\bibitem\s*[\[|{]'.a:prefix, "%")
 		q
 		
 		return 1
@@ -647,7 +652,7 @@ endfunction " }}}
 function! Tex_ScanFileForLabels(prefix)
 	call Tex_Debug("+Tex_ScanFileForLabels: grepping in file [".bufname('%')."]", "view")
 
-	lcd %:p:h
+	exec 'lcd'.fnameescape(expand('%:p:h'))
 	call Tex_Grepadd('\\label{'.a:prefix, "%")
 
 	" Then recursively grep for all \include'd or \input'ed files.
@@ -732,6 +737,15 @@ function! Tex_StartOutlineCompletion()
     set cmdheight=1
     set lazyredraw
 
+	if has('python') && Tex_GetVarValue('Tex_UsePython')
+		python retval = outline.main(vim.eval("Tex_GetMainFileName(':p')"), vim.eval("s:prefix"))
+
+		" transfer variable from python to a local variable.
+		python vim.command("""let retval = "%s" """ % re.sub(r'"|\\', r'\\\g<0>', retval))
+	else
+		let retval = system(shellescape(s:path.'/outline.py').' '.shellescape(mainfname).' '.shellescape(s:prefix))
+	endif
+
     bot split __OUTLINE__
 	exec Tex_GetVarValue('Tex_OutlineWindowHeight', 15).' wincmd _'
 
@@ -745,19 +759,7 @@ function! Tex_StartOutlineCompletion()
 
 	" delete everything in it to the blackhole
 	% d _
-
-	if has('python') && Tex_GetVarValue('Tex_UsePython')
-		exec 'python retval = outline.main('
-			\. 'r"' . fnamemodify(mainfname, ':p') . '", '
-			\. 'r"' . s:prefix . '")'
-
-		" transfer variable from python to a local variable.
-		python vim.command("""let retval = "%s" """ % re.sub(r'"|\\', r'\\\g<0>', retval))
-
-		0put!=retval
-	else
-		exec '0r!'.s:path.'/outline.py '.mainfname.' '.s:prefix
-	endif
+	0put!=retval
 
 	0
 
@@ -769,6 +771,7 @@ function! Tex_StartOutlineCompletion()
 	exec 'nnoremap <buffer> q '
 		\ .':cd '.s:origdir.'<CR>'
 		\ .':close<CR>'
+		\ .':call Tex_SwitchToInsertMode()<CR>'
 
 	" once the buffer is initialized, go back to the original settings.
 	setlocal nomodifiable
@@ -811,9 +814,8 @@ function! Tex_FinishOutlineCompletion()
 		let ref_complete = matchstr(getline(line('.')-1), '^>\s\+\zs\S\+\ze')
 	endif
 
-	let ref_remaining = strpart(ref_complete, strlen(s:prefix))
 	close
-	call Tex_CompleteWord(ref_remaining)
+	call Tex_CompleteWord(ref_complete, strlen(s:prefix))
 endfunction " }}}
 
 " ==============================================================================
@@ -822,10 +824,11 @@ endfunction " }}}
 " Tex_FindBibFiles: finds all .bib files used by the main file {{{
 " Description: 
 function! Tex_FindBibFiles()
+	call Tex_Debug(":Tex_FindBibFiles: ", "view")
 
 	let mainfname = Tex_GetMainFileName(':p')
 	wincmd n
-	exec 'silent! e '.mainfname
+	exec 'silent! e '.fnameescape(mainfname)
 
 	if search('\\\(no\)\?bibliography{', 'w')
 
@@ -874,6 +877,7 @@ endif
 function! Tex_StartCiteCompletion()
 	let bibfiles = Tex_FindBibFiles()
 	if bibfiles !~ '\S'
+		call Tex_SwitchToInsertMode()
 		echohl WarningMsg
 		echomsg 'No bibfiles found! Sorry'
 		echohl None
@@ -899,7 +903,7 @@ function! Tex_StartCiteCompletion()
 	nmap <buffer> <silent> f		<Plug>Tex_FilterBibEntries
 	nmap <buffer> <silent> s		<Plug>Tex_SortBibEntries
 	nmap <buffer> <silent> a		<Plug>Tex_RemoveBibFilters
-	nmap <buffer> <silent> q		:close<CR>
+	nmap <buffer> <silent> q		:close<CR>:call Tex_SwitchToInsertMode()<CR>
 	nmap <buffer> <silent> <CR>		<Plug>Tex_CompleteCiteEntry
 
 endfunction " }}}
@@ -1044,7 +1048,19 @@ function! Tex_CompleteCiteEntry()
 	let ref = matchstr(getline('.'), '\[\zs\S\+\ze\]$')
 	close
 	call Tex_Debug(":Tex_CompleteCiteEntry: completing with ".ref, "view")
-	call Tex_CompleteWord(strpart(ref, strlen(s:prefix)))
+	call Tex_CompleteWord(ref, strlen(s:prefix))
+endfunction " }}}
+
+" Tex_SwitchToInsertMode: Switch to insert mode {{{
+" Description: This is usually called when completion is finished
+function! Tex_SwitchToInsertMode()
+	call Tex_Debug(":Tex_SwitchToInsertMode: ", "view")
+	if col('.') == strlen(getline('.'))
+		startinsert!
+	else
+		normal! l
+		startinsert
+	endif
 endfunction " }}}
 
 com! -nargs=0 TClearCiteHist unlet! s:citeSearchHistory
