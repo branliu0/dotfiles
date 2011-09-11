@@ -109,6 +109,7 @@ au BufNewFile,BufRead *.php,*.phpt,*.htm,*.html set ts=2 sts=2 sw=2 expandtab
 au BufNewFile,BufRead *.phpt set ft=php
 au BufNewFile,BufRead *.py set noexpandtab
 au BufNewFile,BufRead *.otl set ft=otl nolist noexpandtab
+au BufNewFile,BufRead *.tex set nolist
 au BufReadPost fugitive://* set bufhidden=delete
 
 let b:tt2_syn_tags = '\[% %] <!-- -->'
