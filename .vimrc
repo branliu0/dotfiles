@@ -110,6 +110,7 @@ au BufNewFile,BufRead *.phpt set ft=php
 au BufNewFile,BufRead *.py set noexpandtab
 au BufNewFile,BufRead *.otl set ft=otl nolist noexpandtab
 au BufNewFile,BufRead *.tex set nolist
+au BufNewFile,BufRead *.dot set list smartindent
 au BufReadPost fugitive://* set bufhidden=delete
 
 let b:tt2_syn_tags = '\[% %] <!-- -->'
