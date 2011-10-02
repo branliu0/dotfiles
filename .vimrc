@@ -115,6 +115,8 @@ au BufReadPost fugitive://* set bufhidden=delete
 
 let b:tt2_syn_tags = '\[% %] <!-- -->'
 
+let g:haskell_indent_if = 2
+
 " TeX
 let g:tex_flavor='latex'
 let g:Tex_DefaultTargetFormat = 'pdf'
