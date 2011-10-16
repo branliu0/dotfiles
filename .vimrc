@@ -108,7 +108,7 @@ au BufNewFile,BufRead *.tt,*.tt2 set ft=tt2html ts=2 sts=2 sw=2 expandtab
 au BufNewFile,BufRead *.php,*.phpt,*.htm,*.html set ts=2 sts=2 sw=2 expandtab
 au BufNewFile,BufRead *.phpt set ft=php
 au BufNewFile,BufRead *.py set noexpandtab
-au BufNewFile,BufRead *.otl set ft=otl nolist noexpandtab
+au BufNewFile,BufRead *.otl set ft=otl nolist noexpandtab smartindent tw=120
 au BufNewFile,BufRead *.tex set nolist
 au BufNewFile,BufRead *.dot set list smartindent
 au BufReadPost fugitive://* set bufhidden=delete
@@ -139,6 +139,8 @@ map <Leader>n :NERDTreeFind<cr>
 map <Leader>N :NERDTreeToggle<cr>
 map gb :bnext<cr>
 map gB :bprev<cr>
+
+nnoremap <silent> <Leader>V <Plug>VimroomToggle
 
 " MAPPINGS ===========
 
