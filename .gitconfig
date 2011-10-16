@@ -2,6 +2,9 @@
 ### Please borrow freely from this config, but make sure to change
 ### the [user] section to your info
 
+[github]
+  user = thenovices
+
 [user]
 	name = Brandon Liu
 	email = brandon.k.liu@gmail.com
