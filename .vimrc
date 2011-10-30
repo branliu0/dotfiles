@@ -111,6 +111,7 @@ au BufNewFile,BufRead *.py set noexpandtab
 au BufNewFile,BufRead *.otl set ft=otl nolist noexpandtab smartindent tw=100
 au BufNewFile,BufRead *.tex set nolist
 au BufNewFile,BufRead *.dot set list smartindent
+au BufNewFile,BufRead *.md set nolist
 au BufReadPost fugitive://* set bufhidden=delete
 
 let b:tt2_syn_tags = '\[% %] <!-- -->'
