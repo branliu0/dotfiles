@@ -7,3 +7,6 @@
 [submodule ".vim/bundle/CamelCaseMotion"]
 	path = .vim/bundle/CamelCaseMotion
 	url = http://github.com/bkad/CamelCaseMotion.git
+[submodule ".vim/bundle/vimroom"]
+	path = .vim/bundle/vimroom
+	url = https://github.com/mikewest/vimroom.git
