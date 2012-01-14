@@ -4,3 +4,6 @@
 [submodule ".vim/bundle/vim-markdown"]
 	path = .vim/bundle/vim-markdown
 	url = http://github.com/plasticboy/vim-markdown
+[submodule ".vim/bundle/CamelCaseMotion"]
+	path = .vim/bundle/CamelCaseMotion
+	url = http://github.com/bkad/CamelCaseMotion.git
