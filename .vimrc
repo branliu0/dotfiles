@@ -239,14 +239,14 @@ endif
 map <F4> :TlistToggle<CR>
 map <F8> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
-" Ctrl-M to run current file in PHP
-autocmd FileType php noremap <C-N> :w<CR>:!/usr/bin/env php %<CR>
 " Ctrl-N to lint current PHP file
-autocmd FileType php noremap <C-M> :w<CR>:!/usr/bin/env php -l %<CR>
-" Ctrl-M to run current file in Ruby
-autocmd FileType ruby noremap <C-N> :w<CR>:!/usr/bin/env ruby %<CR>
+autocmd FileType php noremap <C-N> :w<CR>:!/usr/bin/env php %<CR>
+" \m to run current file in PHP
+autocmd FileType php noremap <Leader>m :w<CR>:!/usr/bin/env php -l %<CR>
 " Ctrl-N to lint current Ruby file
-autocmd FileType ruby noremap <C-M> :w<CR>:!/usr/bin/env ruby -c %<CR>
+autocmd FileType ruby noremap <C-N> :w<CR>:!/usr/bin/env ruby %<CR>
+" \m to run current file in Ruby
+autocmd FileType ruby noremap <Leader>m :w<CR>:!/usr/bin/env ruby -c %<CR>
 
 " Use * register (clipboard) as default for y/d/p/x commands
 " set clipboard=unnamed
