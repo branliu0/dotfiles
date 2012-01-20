@@ -34,3 +34,6 @@
 [submodule ".vim/bundle/vim-yankring"]
 	path = .vim/bundle/vim-yankring
 	url = https://github.com/chrismetcalf/vim-yankring.git
+[submodule ".vim/bundle/vim-coffee-script"]
+	path = .vim/bundle/vim-coffee-script
+	url = https://github.com/kchmck/vim-coffee-script.git
