@@ -1,10 +1,5 @@
 " Brandon Liu's .vimrc
 " Feel free to use!
-
-" Necessary to get pathogen working
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
-
 set nocompatible
 behave xterm
 
@@ -68,6 +63,9 @@ Bundle 'tpope/vim-markdown'
 Bundle 'vimoutliner/vimoutliner'
 Bundle 'corntrace/vjde'
 Bundle 'wannesm/wmgraphviz.vim'
+Bundle 'omlet'
+Bundle 'jcf/vim-latex'
+Bundle 'vim-scripts/haskell.vim'
 
 " Vim Text Objects
 Bundle 'kana/vim-textobj-user'
