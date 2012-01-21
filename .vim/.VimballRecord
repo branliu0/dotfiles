@@ -1,2 +1,0 @@
-Align.vba: call delete('/home/dliu/.vim/plugin/AlignPlugin.vim')|call delete('/home/dliu/.vim/plugin/AlignMapsPlugin.vim')|call delete('/home/dliu/.vim/plugin/cecutil.vim')|call delete('/home/dliu/.vim/doc/Align.txt')|call delete('/home/dliu/.vim/autoload/Align.vim')|call delete('/home/dliu/.vim/autoload/AlignMaps.vim')
-supertab.vba: call delete('/home/remindavax/.vim/doc/supertab.txt')|call delete('/home/remindavax/.vim/plugin/supertab.vim')
