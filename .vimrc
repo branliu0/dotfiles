@@ -8,6 +8,84 @@ call pathogen#helptags()
 set nocompatible
 behave xterm
 
+" Initialize vundle!
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" ----------------------------
+" Plugins, managed by Vundle!
+" ----------------------------
+
+Bundle 'gmarik/vundle'
+
+
+" Movement
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'mutewinter/LustyJuggler'
+Bundle 'kien/ctrlp.vim'
+
+" UI enhancements
+Bundle 'mutewinter/vim-indent-guides'
+Bundle 'dickeytk/status.vim'
+Bundle 'scrooloose/nerdtree'
+Bundle 'Rykka/ColorV'
+Bundle 'gregsexton/MatchTag'
+
+"Vim enhancements
+Bundle 'IndexedSearch'
+Bundle 'xolox/vim-session'
+Bundle 'FuzzyFinder'
+
+" Editing enhancements
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'tpope/vim-surround'
+Bundle 'godlygeek/tabular'
+Bundle 'Raimondi/delimitMate'
+Bundle 'scrooloose/syntastic'
+Bundle 'ervandew/supertab'
+Bundle 'Shougo/neocomplcache'
+Bundle 'tpope/vim-unimpaired'
+Bundle 'tpope/vim-endwise'
+Bundle 'int3/vim-taglist-plus'
+Bundle 'YankRing.vim'
+
+" snipMate
+Bundle 'garbas/vim-snipmate'
+" snipMate dependences
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'tomtom/tlib_vim'
+Bundle 'scrooloose/snipmate-snippets'
+
+" Language support
+Bundle 'tpope/vim-rails'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'tpope/vim-haml'
+Bundle 'pangloss/vim-javascript'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'itspriddle/vim-jquery'
+Bundle 'leshill/vim-json'
+Bundle 'tpope/vim-markdown'
+Bundle 'vimoutliner/vimoutliner'
+Bundle 'corntrace/vjde'
+Bundle 'wannesm/wmgraphviz.vim'
+
+" Vim Text Objects
+Bundle 'kana/vim-textobj-user'
+Bundle 'argtextobj.vim'
+Bundle 'bkad/CamelCaseMotion'
+Bundle 'michaeljsmith/vim-indent-object'
+Bundle 'nelstrom/vim-textobj-rubyblock'
+
+" Integrations
+Bundle 'tpope/vim-fugitive'
+Bundle 'mileszs/ack.vim'
+
+" Utilities, Dependencies
+Bundle 'L9'
+
+
+" ---------------------
+
 set encoding=utf-8
 set backspace=indent,eol,start        " Backspace over everything.
 set history=50
@@ -93,6 +171,7 @@ map <Leader>c :%s/\s\+$//<CR>:nohl<CR>
 if has("mac")
   let loaded_taglist = 'no' "Disable ctags on OSX
 endif
+let g:LustyJugglerSuppressRubyWarning = 1 " OSX terminal vim doesn't have ruby support :(
 
 set shell=/bin/bash
 
@@ -134,7 +213,7 @@ let g:NERDTreeWinPos = 'right'
 "let g:miniBufExplMapWindowNavVim = 1
 "let g:miniBufExplMapWindowNavArrows = 1
 "let g:miniBufExplMapCTabSwitchBufs = 1
-"let g:miniBufExplModSelTarget = 1 
+"let g:miniBufExplModSelTarget = 1
 "map <Leader>e :MiniBufExplorer<cr>
 "map <Leader>e :MiniBufExplorer<cr>
 map <Leader>n :NERDTreeFind<cr>
