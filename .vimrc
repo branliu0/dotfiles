@@ -63,7 +63,7 @@ Bundle 'tpope/vim-markdown'
 Bundle 'vimoutliner/vimoutliner'
 Bundle 'corntrace/vjde'
 Bundle 'wannesm/wmgraphviz.vim'
-Bundle 'omlet'
+Bundle 'omlet.vim'
 Bundle 'jcf/vim-latex'
 Bundle 'vim-scripts/haskell.vim'
 
