@@ -66,6 +66,7 @@ Bundle 'wannesm/wmgraphviz.vim'
 Bundle 'omlet.vim'
 Bundle 'jcf/vim-latex'
 Bundle 'vim-scripts/haskell.vim'
+Bundle '2072/PHP-Indenting-for-VIm'
 
 " Vim Text Objects
 Bundle 'kana/vim-textobj-user'
