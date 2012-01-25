@@ -22,8 +22,5 @@ nmap <Leader>a: :Tabularize /:<CR>
 vmap <Leader>a: :Tabularize /:<CR>
 
 " taglist
-if has("mac")
-  let loaded_taglist = 'no' "Disable ctags on OSX
-endif
 map <F4> :TlistToggle<CR>
 map <F8> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
