@@ -44,6 +44,7 @@ Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-endwise'
 Bundle 'int3/vim-taglist-plus'
 Bundle 'YankRing.vim'
+Bundle 'matchit.zip'
 
 " snipMate
 Bundle 'garbas/vim-snipmate'
