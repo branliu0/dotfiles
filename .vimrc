@@ -29,7 +29,6 @@ Bundle 'gregsexton/MatchTag'
 "Vim enhancements
 Bundle 'IndexedSearch'
 Bundle 'xolox/vim-session'
-Bundle 'FuzzyFinder'
 Bundle 'mru.vim'
 
 " Editing enhancements
@@ -43,7 +42,6 @@ Bundle 'Shougo/neocomplcache'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-endwise'
 Bundle 'int3/vim-taglist-plus'
-Bundle 'YankRing.vim'
 Bundle 'matchit.zip'
 
 " snipMate
@@ -173,6 +171,7 @@ if has("mac")
   let loaded_taglist = 'no' "Disable ctags on OSX
 endif
 let g:LustyJugglerSuppressRubyWarning = 1 " OSX terminal vim doesn't have ruby support :(
+let g:ctrlp_map = '<c-p>'
 
 set shell=/bin/bash
 
