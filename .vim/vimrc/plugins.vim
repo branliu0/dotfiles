@@ -39,6 +39,7 @@ Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-endwise'
 Bundle 'int3/vim-taglist-plus'
 Bundle 'matchit.zip'
+Bundle 'panozzaj/vim-autocorrect'
 
 " snipMate
 Bundle 'garbas/vim-snipmate'
