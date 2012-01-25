@@ -14,6 +14,6 @@ source $HOME/.vim/vimrc/plugins.vim
 source $HOME/.vim/vimrc/settings.vim
 
 " Source a local vimrc if it exists
-if filereadable("$HOME/.vimrc.local")
+if filereadable(expand("$HOME/.vimrc.local"))
   source $HOME/.vimrc.local
 endif
