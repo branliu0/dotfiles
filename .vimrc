@@ -30,6 +30,7 @@ Bundle 'gregsexton/MatchTag'
 Bundle 'IndexedSearch'
 Bundle 'xolox/vim-session'
 Bundle 'FuzzyFinder'
+Bundle 'mru.vim'
 
 " Editing enhancements
 Bundle 'scrooloose/nerdcommenter'
