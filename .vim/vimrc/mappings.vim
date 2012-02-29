@@ -12,6 +12,9 @@ map <Leader>c :%s/\s\+$//<CR>:nohl<CR>
 map gb :bnext<cr>
 map gB :bprev<cr>
 
+" Easier way to save files
+map ZX :w<CR>
+
 " Tab to go forward in history, Shift-Tab to go backward.
 nmap <Tab> <C-I>
 nmap <S-Tab> <C-O>
