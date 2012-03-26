@@ -9,6 +9,9 @@ inoremap {<CR> {<CR>}<ESC>O
 " Clear all trailing spaces
 map <Leader>c :%s/\s\+$//<CR>:nohl<CR>
 
+" Mapping shortcut to remove highlight
+map <Leader><Space> :nohl<CR>
+
 map gb :bnext<cr>
 map gB :bprev<cr>
 
