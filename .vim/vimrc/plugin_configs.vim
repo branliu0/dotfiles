@@ -8,9 +8,6 @@ let g:tex_flavor='latex'
 let g:Tex_DefaultTargetFormat = 'pdf'
 let g:Tex_MultipleCompileFormats = 'dvi,pdf'
 
-" LustyJuggler
-let g:LustyJugglerSuppressRubyWarning = 1 " OSX terminal vim doesn't have ruby support :(
-
 " NERD_Tree
 let g:NERDTreeWinPos = 'right'
 map <Leader>n :NERDTreeFind<cr>
