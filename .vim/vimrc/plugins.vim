@@ -12,7 +12,6 @@ Bundle 'gmarik/vundle'
 
 " Movement
 Bundle 'Lokaltog/vim-easymotion'
-Bundle 'sjbach/lusty'
 Bundle 'kien/ctrlp.vim'
 
 " UI enhancements
