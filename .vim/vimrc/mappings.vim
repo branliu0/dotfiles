@@ -66,6 +66,7 @@ inoremap <C-u> <C-o><C-R>
 " Emacs style mappings
 inoremap <C-A> <Home>
 inoremap <C-E> <End>
+inoremap <C-D> <Del>
 
 " Make tab switching easier on macs
 if has("mac")
