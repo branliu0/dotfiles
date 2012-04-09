@@ -65,7 +65,6 @@ Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-endwise'
 Bundle 'int3/vim-taglist-plus'
 Bundle 'matchit.zip'
-Bundle 'panozzaj/vim-autocorrect'
 Bundle 'mattn/zencoding-vim'
 
 " snipMate
@@ -85,20 +84,16 @@ Bundle 'itspriddle/vim-jquery'
 Bundle 'leshill/vim-json'
 Bundle 'tpope/vim-markdown'
 Bundle 'vimoutliner/vimoutliner'
-Bundle 'corntrace/vjde'
 Bundle 'wannesm/wmgraphviz.vim'
 Bundle 'omlet.vim'
 Bundle 'jcf/vim-latex'
 Bundle 'vim-scripts/haskell.vim'
 Bundle '2072/PHP-Indenting-for-VIm'
 Bundle 'othree/html5.vim'
+Bundle 'groenewege/vim-less'
 
 " Vim Text Objects
-Bundle 'kana/vim-textobj-user'
-Bundle 'argtextobj.vim'
 Bundle 'bkad/CamelCaseMotion'
-Bundle 'michaeljsmith/vim-indent-object'
-Bundle 'nelstrom/vim-textobj-rubyblock'
 
 " Integrations
 Bundle 'tpope/vim-fugitive'
