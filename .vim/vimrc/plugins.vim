@@ -8,31 +8,58 @@ call vundle#rc()
 " Plugins, managed by Vundle!
 " ----------------------------
 
+" Use to manage plugins!
 Bundle 'gmarik/vundle'
 
-" Movement
+" ----------------
+" --- Movement ---
+" ----------------
+" Easier vim motions. Try <Leader><Leader>w or <Leader><Leader>fo
 Bundle 'Lokaltog/vim-easymotion'
+" Like Command-T or fuzzyfinder. Use to fuzzy find files
 Bundle 'kien/ctrlp.vim'
 
-" UI enhancements
+" -----------------------
+" --- UI enhancements ---
+" -----------------------
+" Highlight levels of indentation
 Bundle 'mutewinter/vim-indent-guides'
-Bundle 'dickeytk/status.vim'
+" File explorer within Vim
 Bundle 'scrooloose/nerdtree'
-Bundle 'Rykka/ColorV'
+" Ultimate Vim statusline utility
+Bundle 'Lokaltog/vim-powerline'
+" Highlight colors in CSS files
+Bundle 'skammer/vim-css-color'
+" Highlights the matching HTML tag
 Bundle 'gregsexton/MatchTag'
 
-"Vim enhancements
+" ------------------------
+" --- Vim enhancements ---
+" ------------------------
+" Shows 'Nth match out of M' for searches
 Bundle 'IndexedSearch'
+" Extended Vim Session Management
 Bundle 'xolox/vim-session'
+" Simple plugin to view most recently used files
 Bundle 'mru.vim'
+Bundle 'kien/tabman.vim'
 
-" Editing enhancements
+" ----------------------------
+" --- Editing enhancements ---
+" ----------------------------
+" Shortcuts to comment code. Use <Leader>cc or <Leader>c<Space>
 Bundle 'scrooloose/nerdcommenter'
+" Simple shortcuts to deal with surrounding symbols
 Bundle 'tpope/vim-surround'
+" Text filtering and alignment
 Bundle 'godlygeek/tabular'
+" Insert-mode autocompletion for quotes, parens, brackets, etc.
 Bundle 'Raimondi/delimitMate'
+" Syntax checking in Vim!
 Bundle 'scrooloose/syntastic'
+" Perform all vim insert mode completions with Tab!
 Bundle 'ervandew/supertab'
+" Ultimate auto-completion system for Vim
 Bundle 'Shougo/neocomplcache'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-endwise'
@@ -64,6 +91,7 @@ Bundle 'omlet.vim'
 Bundle 'jcf/vim-latex'
 Bundle 'vim-scripts/haskell.vim'
 Bundle '2072/PHP-Indenting-for-VIm'
+Bundle 'othree/html5.vim'
 
 " Vim Text Objects
 Bundle 'kana/vim-textobj-user'
