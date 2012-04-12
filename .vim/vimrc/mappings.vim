@@ -35,6 +35,13 @@ nnoremap D dg$
 nnoremap I g^i
 nnoremap A g$a
 
+" For those pesky :W errors...
+command! W w
+command! Wq wq
+command! WQ wq
+command! Q q
+
+" Better scrolling
 noremap <C-Y> 5<C-Y>
 noremap <C-E> 5<C-E>
 
