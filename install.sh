@@ -49,8 +49,12 @@ echo
 echo Symlinking the following dotfiles: $dotfiles
 echo Existing files will be backed up with the .old extension
 
-echo $dotfiles | tr ',' "\n" | xargs -I{} cp -f ~/{} ~/{}.old
-echo $dotfiles | tr ',' "\n" | xargs ln -sf {} ~/{}
+for f in "${dotfiles[@]}"; do
+  if [[ -f ~/$f || -d ~/$f ]]; then
+    cp -f ~/$f ~/$f.old
+  fi
+done
+echo "${dotfiles[@]}" | tr ',' "\n" | xargs ln -sf {} ~/{}
 
 echo
 echo Installing vim plugins "(could take a while)"
