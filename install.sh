@@ -65,7 +65,10 @@ done
 echo
 echo Installing vim plugins "(could take a while)"
 git clone https://github.com/gmarik/vundle.git .vim/bundle/vundle
-vim +BundleInstall +qall
+tmp_file="tmp$$"
+echo "vim +BundleInstall +qall" > $tmp_file
+bash $tmp_file
+rm -f $tmp_file
 
 echo
 echo -e "\033[1;32mEverything successfully installed.\033[0m"
