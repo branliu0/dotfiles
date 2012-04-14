@@ -38,8 +38,6 @@ echo
 echo Downloading and installing...
 git clone https://github.com/thenovices/dotfiles.git dotfiles
 cd dotfiles
-git clone https://github.com/gmarik/vundle.git .vim/bundle/vundle
-vim +BundleInstall +qall
 
 # Build up a list of all the dotfiles
 dotfiles=()
@@ -47,11 +45,17 @@ for f in $(echo .[^.]*); do
   dotfiles+=("$f")
 done
 
+echo
 echo Symlinking the following dotfiles: $dotfiles
 echo Existing files will be backed up with the .old extension
 
 echo $dotfiles | tr ',' "\n" | xargs -I{} cp -f ~/{} ~/{}.old
 echo $dotfiles | tr ',' "\n" | xargs ln -sf {} ~/{}
+
+echo
+echo Installing vim plugins "(could take a while)"
+git clone https://github.com/gmarik/vundle.git .vim/bundle/vundle
+vim +BundleInstall +qall
 
 echo
 echo -e "\033[1;32mEverything successfully installed.\033[0m"
