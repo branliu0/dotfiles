@@ -50,13 +50,15 @@ echo Symlinking the following dotfiles: $dotfiles
 echo Existing files will be backed up with the .old extension
 
 for f in "${dotfiles[@]}"; do
+  # Back it up if it already exists
   if [[ -f ~/$f ]]; then
     cp -f ~/$f ~/$f.old
   elif [[ -d ~/$f ]]; then
     cp -rf ~/$f ~/$f.old
   fi
+  # And symlink it!
+  ln -sf $f ~/$f
 done
-echo "${dotfiles[@]}" | tr ',' "\n" | xargs ln -sf {} ~/{}
 
 echo
 echo Installing vim plugins "(could take a while)"
