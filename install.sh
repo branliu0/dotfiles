@@ -50,8 +50,10 @@ echo Symlinking the following dotfiles: $dotfiles
 echo Existing files will be backed up with the .old extension
 
 for f in "${dotfiles[@]}"; do
-  if [[ -f ~/$f || -d ~/$f ]]; then
+  if [[ -f ~/$f ]]; then
     cp -f ~/$f ~/$f.old
+  elif [[ -d ~/$f ]]; then
+    cp -rf ~/$f ~/$f.old
   fi
 done
 echo "${dotfiles[@]}" | tr ',' "\n" | xargs ln -sf {} ~/{}
