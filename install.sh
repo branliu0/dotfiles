@@ -36,7 +36,7 @@ fi
 
 echo
 echo Downloading and installing...
-git clone https://github.com/thenovices/dotfiles.git dotfiles
+git clone --quiet https://github.com/thenovices/dotfiles.git dotfiles
 cd dotfiles
 
 # Build up a list of all the dotfiles (ignoring .git)
@@ -64,7 +64,7 @@ done
 
 echo
 echo Installing vim plugins "(could take a while)"
-git clone https://github.com/gmarik/vundle.git .vim/bundle/vundle
+git clone --quiet https://github.com/gmarik/vundle.git .vim/bundle/vundle
 vim +BundleInstall +qall < /dev/tty
 
 source ~/.bashrc
