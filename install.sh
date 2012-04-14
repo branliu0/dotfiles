@@ -16,8 +16,15 @@ function check_if_update() {
   fi
 }
 
+function check_dependencies() {
+  type git &> /dev/null || echo -e "\033[1;31mgit is a required dependency.\033[0m"
+}
+
 # Check to see if we're updating or installing
 check_if_update
+
+# Check to make sure all dependencies are installed
+check_dependencies
 
 echo This bash script will download and install the dotfiles from
 echo http://github.com/thenovices/dotfiles.
@@ -70,4 +77,4 @@ vim +BundleInstall +qall < /dev/tty
 source ~/.bashrc
 
 echo
-echo -e "\033[1;32mEverything successfully installed.\033[0m"
+echo -e "\033[1;32mEverything succesfully installed.\033[0m"
