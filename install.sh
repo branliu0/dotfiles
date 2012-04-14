@@ -41,7 +41,7 @@ cd dotfiles
 
 # Build up a list of all the dotfiles (ignoring .git)
 dotfiles=()
-for f in $(find . -depth 1 -name ".[^.]*" | xargs basename | grep -v "^.git$"); do
+for f in $(find . -maxdepth 1 -name ".[^.]*" -exec basename {} \; | grep -v "^.git$"); do
   dotfiles+=("$f")
 done
 
