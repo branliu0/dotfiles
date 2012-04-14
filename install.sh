@@ -56,8 +56,10 @@ for f in "${dotfiles[@]}"; do
   elif [[ -d ~/$f ]]; then
     cp -rf ~/$f ~/$f.old
   fi
-  # And symlink it!
-  ln -sf $f ~/$f
+  # And symlink it to the relative directory!
+  abs_path=$(readlink -f $f)
+  rel_path="${abs_path#$HOME/}"
+  ln -sf $rel_path ~/$f
 done
 
 echo
