@@ -8,6 +8,11 @@ let g:tex_flavor='latex'
 let g:Tex_DefaultTargetFormat = 'pdf'
 let g:Tex_MultipleCompileFormats = 'dvi,pdf'
 
+" NERD_Commenter
+
+" Add a space before comments
+let g:NERDSpaceDelims = 1
+
 " NERD_Tree
 let g:NERDTreeWinPos = 'right'
 map <Leader>n :NERDTreeFind<cr>
