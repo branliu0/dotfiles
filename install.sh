@@ -39,9 +39,9 @@ echo Downloading and installing...
 git clone https://github.com/thenovices/dotfiles.git dotfiles
 cd dotfiles
 
-# Build up a list of all the dotfiles
+# Build up a list of all the dotfiles (ignoring .git)
 dotfiles=()
-for f in $(echo .[^.]*); do
+for f in $(find . -depth 1 -name ".[^.]*" | xargs basename | grep -v "^.git$"); do
   dotfiles+=("$f")
 done
 
