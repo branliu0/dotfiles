@@ -9,13 +9,19 @@ let g:Tex_DefaultTargetFormat = 'pdf'
 let g:Tex_MultipleCompileFormats = 'dvi,pdf'
 
 " NERD_Commenter
-
 " Add a space before comments
 let g:NERDSpaceDelims = 1
 
 " NERD_Tree
 let g:NERDTreeWinPos = 'right'
 map <Leader>n :NERDTreeFind<cr>
+
+" Rainbow Parentheses
+" Always on
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
 
 " Tabularize
 nmap <Leader>a= :Tabularize /=<CR>

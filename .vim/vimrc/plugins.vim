@@ -32,6 +32,8 @@ Bundle 'Lokaltog/vim-powerline'
 Bundle 'skammer/vim-css-color'
 " Highlights the matching HTML tag
 Bundle 'gregsexton/MatchTag'
+" Rainbow parentheses!! :)
+Bundle 'kien/rainbow_parentheses.vim'
 
 " ------------------------
 " --- Vim enhancements ---
