@@ -17,7 +17,7 @@ function check_if_update() {
 }
 
 function check_dependencies() {
-  type git &> /dev/null || echo -e "\033[1;31mgit is a required dependency.\033[0m"
+  type git &> /dev/null || echo -e "\[\033[1;31m\]git is a required dependency.\[\033[0m\]"
 }
 
 # Check to see if we're updating or installing
@@ -77,4 +77,4 @@ vim +BundleInstall +qall < /dev/tty
 source ~/.bashrc
 
 echo
-echo -e "\033[1;32mEverything succesfully installed.\033[0m"
+echo -e "\[\033[1;32m\]Everything succesfully installed.\[\033[0m\]"
