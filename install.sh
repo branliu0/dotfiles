@@ -11,7 +11,7 @@ set -e
 function check_if_update() {
   parent_dir=$(basename $(pwd))
   if [[ $parent_dir = "dotfiles" ]]; then
-    echo "Looks like your updating. This script currently only handles installation."
+    echo "Looks like you're updating. This script currently only handles installation."
     exit 1
   fi
 }
