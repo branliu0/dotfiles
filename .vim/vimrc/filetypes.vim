@@ -10,6 +10,7 @@ au BufNewFile,BufRead *.otl colors vo_dark
 au BufNewFile,BufRead *.php,*.phpt,*.htm,*.html set ts=2 sts=2 sw=2 expandtab
 au BufNewFile,BufRead *.phpt set ft=php
 au BufNewFile,BufRead *.py set noexpandtab
+au BufNewFile,BufRead *.s{a,c}ss syntax cluster sassCssAttributes add=@cssColors
 au BufNewFile,BufRead *.tex set nolist
 au BufNewFile,BufRead *.tt,*.tt2 set ft=tt2html ts=2 sts=2 sw=2 expandtab
 au BufReadPost fugitive://* set bufhidden=delete
