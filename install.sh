@@ -72,7 +72,7 @@ done
 echo
 echo Installing vim plugins "(could take a while)"
 git clone --quiet https://github.com/gmarik/vundle.git .vim/bundle/vundle
-vim +BundleInstall +qall < /dev/tty
+vim +BundleInstall +qall < /dev/tty # necessary to avoid vim: Input not from terminal warning
 
 source ~/.bashrc
 
