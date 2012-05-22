@@ -86,4 +86,13 @@ if has("mac")
 	nmap <D-7> 7gt
 	nmap <D-8> 8gt
 	nmap <D-9> 9gt
+	imap <D-1> <ESC>1gt
+	imap <D-2> <ESC>2gt
+	imap <D-3> <ESC>3gt
+	imap <D-4> <ESC>4gt
+	imap <D-5> <ESC>5gt
+	imap <D-6> <ESC>6gt
+	imap <D-7> <ESC>7gt
+	imap <D-8> <ESC>8gt
+	imap <D-9> <ESC>9gt
 endif
