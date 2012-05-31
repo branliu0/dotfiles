@@ -35,7 +35,7 @@ set splitbelow
 set splitright
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P " taken from :help fugitive-statusline
 set tabstop=2
-set tags=tags;
+set tags=./tags;/
 set textwidth=78
 set timeoutlen=250                    " Time to wait after ESC
 set timeoutlen=600
