@@ -1,0 +1,12 @@
+#! /usr/bin/env perl
+
+if (!grep { $_ eq "--language-force=javascript" } @ARGV)
+    { system("ctags " . join(" ", @ARGV)); exit; }
+system("jsctags -o taglist " . pop() . " > /dev/null");
+open(F, "taglist");
+while(<F>) {
+    if ($_ =~ /!_TAG_/) { next; }
+    else { $_ =~ s/(\S+)(.*)lineno:(\d+)\ttype:(\w+) function\(([^)]*)\)/\1(\5) \4\2line:\3/; }
+    print $_;
+}
+`rm taglist`;
