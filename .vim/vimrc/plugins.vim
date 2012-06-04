@@ -94,7 +94,7 @@ Bundle 'wannesm/wmgraphviz.vim'
 Bundle 'omlet.vim'
 Bundle 'jcf/vim-latex'
 Bundle 'vim-scripts/haskell.vim'
-Bundle '2072/PHP-Indenting-for-VIm'
+Bundle 'spf13/PIV'
 Bundle 'othree/html5.vim'
 Bundle 'groenewege/vim-less'
 
