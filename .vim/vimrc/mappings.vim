@@ -68,7 +68,7 @@ vnoremap <Space> I<Space><Esc>gv
 
 " Undo and redo in insert mode
 inoremap <C-u> <C-o>u
-inoremap <C-u> <C-o><C-R>
+inoremap <C-y> <C-o><C-R>
 
 " Emacs style mappings
 inoremap <C-A> <Home>
