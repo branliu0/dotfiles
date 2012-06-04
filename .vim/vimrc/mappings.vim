@@ -48,6 +48,10 @@ noremap <C-E> 5<C-E>
 " map control backspace to delete the previous word, useful in Windows
 imap <C-BS> <C-W>
 
+" Fix that annoying <C-j> imaps mapping problem
+" Something /must/ map to <Plug>IMAP_JumpForward in order to remap <C-j>
+map <C-SPACE> <Plug>IMAP_JumpForward
+
 " Make it easier to move between windows
 nmap <C-H> <C-W>h
 nmap <C-J> <C-W>j
