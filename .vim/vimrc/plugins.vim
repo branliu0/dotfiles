@@ -40,6 +40,8 @@ Bundle 'kien/rainbow_parentheses.vim'
 " ------------------------
 " Shows 'Nth match out of M' for searches
 Bundle 'IndexedSearch'
+" Allow tab completion when searching
+Bundle 'SearchComplete'
 " Extended Vim Session Management
 Bundle 'xolox/vim-session'
 " Simple plugin to view most recently used files
