@@ -2,6 +2,7 @@
 
 " CtrlP
 let g:ctrlp_map = '<c-p>'
+map <C-b> :CtrlPBuffer<CR>
 
 " vim-latex
 let g:tex_flavor='latex'
