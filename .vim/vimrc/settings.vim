@@ -1,6 +1,7 @@
 " All the Vim settings go here!
 
 set autoindent                        " always set autoindenting on
+set autoread                          " Refresh buffer if file has been changed externally. Note that this doesn't automatically run every some interval.
 set autowrite                         " Automatically save before commands like :next
 set backspace=indent,eol,start        " Backspace over everything.
 set cursorline                        " highlight cursor line
