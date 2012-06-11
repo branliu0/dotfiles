@@ -47,8 +47,6 @@ Bundle 'xolox/vim-session'
 " Simple plugin to view most recently used files
 Bundle 'mru.vim'
 Bundle 'kien/tabman.vim'
-" Nice minimal buffer explorer toolbar
-Bundle 'fholgado/minibufexpl.vim'
 
 " ----------------------------
 " --- Editing enhancements ---
