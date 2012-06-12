@@ -62,6 +62,12 @@ imap <C-J> <Esc><C-W>j
 imap <C-K> <Esc><C-W>k
 imap <C-L> <Esc><C-W>l
 
+" Easier mappings for resizing windows
+nnoremap <C-w>< 5<C-w><
+nnoremap <C-w>> 5<C-w>>
+nmap + 5<C-w>+
+nmap _ 5<C-w>-
+
 " Make it easier to paste in insert mode
 inoremap PPP <Esc>pa
 
