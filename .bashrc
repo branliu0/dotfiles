@@ -101,6 +101,7 @@ alias gs='git status'
 alias mvimcp='open -a Macvim .'
 alias rm='rm -i'
 alias rs='rake spec'
+alias rspec='rspec --color --backtrace --format=documentation'
 alias tmux='tmux -2'
 alias vi='vim'
 
