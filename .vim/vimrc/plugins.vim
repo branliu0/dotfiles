@@ -28,8 +28,6 @@ Bundle 'mutewinter/vim-indent-guides'
 Bundle 'scrooloose/nerdtree'
 " Ultimate Vim statusline utility
 Bundle 'Lokaltog/vim-powerline'
-" Highlight colors in CSS files
-Bundle 'skammer/vim-css-color'
 " Highlights the matching HTML tag
 Bundle 'gregsexton/MatchTag'
 " Rainbow parentheses!! :)
