@@ -28,10 +28,12 @@ au Syntax * RainbowParenthesesLoadBraces
 let g:syntastic_javascript_checker = 'jshint'
 
 " Tabularize
-nmap <Leader>a= :Tabularize /=<CR>
-vmap <Leader>a= :Tabularize /=<CR>
-nmap <Leader>a: :Tabularize /:<CR>
-vmap <Leader>a: :Tabularize /:<CR>
+nmap <Leader>a= :Tabularize /=\zs<CR>
+vmap <Leader>a= :Tabularize /=\zs<CR>
+nmap <Leader>a: :Tabularize /:\zs<CR>
+vmap <Leader>a: :Tabularize /:\zs<CR>
+nmap <Leader>a, :Tabularize /,\zs<CR>
+vmap <Leader>a, :Tabularize /,\zs<CR>
 
 " taglist
 let g:Tlist_Ctags_Cmd = "all-ctags"
