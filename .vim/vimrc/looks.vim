@@ -8,6 +8,10 @@ if has("gui_running")
   colors jellybeans
   set lines=70
   set columns=130
+  " Remove scrollbars, toolbars, etc.
+  set guioptions-=L
+  set guioptions-=r
+  set guioptions-=T
 
   if has("gui_gtk2")
     set guifont=Monaco\ 12
