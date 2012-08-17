@@ -93,6 +93,7 @@ Bundle 'vim-scripts/haskell.vim'
 Bundle 'spf13/PIV'
 Bundle 'othree/html5.vim'
 Bundle 'groenewege/vim-less'
+Bundle 'bbommarito/vim-slim'
 
 " Vim Text Objects
 Bundle 'bkad/CamelCaseMotion'
