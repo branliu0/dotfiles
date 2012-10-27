@@ -10,7 +10,6 @@ au BufNewFile,BufRead *.otl set ft=vo_base nolist noexpandtab smartindent tw=100
 au BufNewFile,BufRead *.otl colors vo_dark
 au BufNewFile,BufRead *.php,*.phpt,*.htm,*.html set ts=2 sts=2 sw=2 expandtab
 au BufNewFile,BufRead *.phpt set ft=php
-au BufNewFile,BufRead *.py set noexpandtab
 au BufNewFile,BufRead *.s{a,c}ss syntax cluster sassCssAttributes add=@cssColors
 au BufNewFile,BufRead *.slim set ft=slim
 au BufNewFile,BufRead *.tex set nolist
