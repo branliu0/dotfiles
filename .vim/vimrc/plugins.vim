@@ -94,6 +94,7 @@ Bundle 'spf13/PIV'
 Bundle 'othree/html5.vim'
 Bundle 'groenewege/vim-less'
 Bundle 'bbommarito/vim-slim'
+Bundle 'klen/python-mode'
 
 " Vim Text Objects
 Bundle 'bkad/CamelCaseMotion'

@@ -17,6 +17,9 @@ let g:NERDSpaceDelims = 1
 let g:NERDTreeWinPos = 'right'
 map <Leader>n :NERDTreeFind<cr>
 
+" Python-mode
+let g:pymode_lint_write = 0
+
 " Rainbow Parentheses
 " Always on
 au VimEnter * RainbowParenthesesToggle
