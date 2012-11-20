@@ -95,6 +95,7 @@ Bundle 'othree/html5.vim'
 Bundle 'groenewege/vim-less'
 Bundle 'bbommarito/vim-slim'
 Bundle 'klen/python-mode'
+Bundle 'django.vim'
 
 " Vim Text Objects
 Bundle 'bkad/CamelCaseMotion'
@@ -102,6 +103,9 @@ Bundle 'bkad/CamelCaseMotion'
 " Integrations
 Bundle 'tpope/vim-fugitive'
 Bundle 'mileszs/ack.vim'
+
+" Colors
+Bundle 'altercation/vim-colors-solarized'
 
 " Utilities, Dependencies
 Bundle 'L9'
