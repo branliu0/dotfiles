@@ -20,6 +20,10 @@ function __rvm_prompt {
   echo $full
 }
 
+function __hg_branch {
+  hg branch 2> /dev/null | awk '{print " (" $1 ")"}'
+}
+
 set_prompt () {
   if [ $? -ne 0 ]; then
     ERR='($?) '
@@ -62,7 +66,7 @@ set_prompt () {
 	GIT_PS1_SHOWDIRTYSTATE=1
 
 	PS1="
-$EMB\u@\h:\w ${R}$ERR$R[\$(__rvm_prompt)]$M\$(__git_ps1)
+$EMB\u@\h:\w ${R}$ERR$R[\$(__rvm_prompt)]$M\$(__git_ps1)\$(__hg_branch)
 $C`date +%D` \t \$$NONE "
 }
 
