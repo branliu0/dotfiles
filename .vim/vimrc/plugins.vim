@@ -45,6 +45,8 @@ Bundle 'xolox/vim-session'
 " Simple plugin to view most recently used files
 Bundle 'mru.vim'
 Bundle 'kien/tabman.vim'
+Bundle 'bufexplorer.zip'
+Bundle 'airblade/vim-gitgutter'
 
 " ----------------------------
 " --- Editing enhancements ---
