@@ -95,7 +95,7 @@ Bundle 'vim-scripts/haskell.vim'
 Bundle 'spf13/PIV'
 Bundle 'othree/html5.vim'
 Bundle 'groenewege/vim-less'
-Bundle 'bbommarito/vim-slim'
+Bundle 'slim-template/vim-slim'
 Bundle 'klen/python-mode'
 Bundle 'django.vim'
 
