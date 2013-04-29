@@ -118,6 +118,7 @@ alias tunnel='ssh -C2qTnN -D 8080 brandonkliu@brandonkliu.com'
 export EDITOR=vim
 
 export PATH=/usr/local/bin:~/bin:~/opt/bin:$PATH:~/dotfiles/bin
+export PYTHONSTARTUP=~/.pystartup
 
 # Turn on colors for grep
 export GREP_COLORS=auto
