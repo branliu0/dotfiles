@@ -130,6 +130,12 @@ fi
 
 source $HOME/.bash/completion.bash
 
+if [[ -d /usr/local/etc/bash_completion.d/ ]]; then
+  for f in /usr/local/etc/bash_completion.d/*; do
+    source $f
+  done
+fi
+
 function git_diff() {
   git diff --no-ext-diff -w "$@" | vim -R -
 }
