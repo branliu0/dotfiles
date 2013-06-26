@@ -130,10 +130,8 @@ fi
 
 source $HOME/.bash/completion.bash
 
-if [[ -d /usr/local/etc/bash_completion.d/ ]]; then
-  for f in /usr/local/etc/bash_completion.d/*; do
-    source $f
-  done
+if [[ -e /usr/local/etc/bash_completion ]]; then
+  source /usr/local/etc/bash_completion
 fi
 
 function git_diff() {
