@@ -29,6 +29,7 @@ au Syntax * RainbowParenthesesLoadBraces
 
 " Syntastic
 let g:syntastic_javascript_checker = 'jshint'
+let g:syntastic_python_checkers = ['pyflakes']
 
 " Tabularize
 nmap <Leader>a= :Tabularize /=\zs<CR>
