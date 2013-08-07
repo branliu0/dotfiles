@@ -19,6 +19,7 @@ set laststatus=2                      " Always show the status line
 set linebreak
 set list                              " show trailing whitespace and tabs
 set listchars=tab:\|\ ,trail:•,extends:>,precedes:<,nbsp:+
+set modelines=1
 set mouse=a
 set noequalalways
 set number
