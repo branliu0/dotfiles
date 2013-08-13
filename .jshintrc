@@ -1,3 +1,4 @@
+// vim: ft=json :
 {
     // Settings
     "passfail"      : false,  // Stop on first error.
@@ -28,7 +29,6 @@
 
 
     // EcmaScript 5.
-    "es5"           : true,   // Allow EcmaScript 5 syntax.
     "strict"        : false,  // Require `use strict` pragma in every file.
     "globalstrict"  : false,  // Allow global "use strict" (also enables 'strict').
 
@@ -56,7 +56,7 @@
     "undef"         : false,  // Require all non-global variables be declared before they are used.
 
 
-    // Persone styling prefrences.
+    // Personal styling prefrences.
     "newcap"        : false,  // Require capitalization of all constructor functions e.g. `new F()`.
     "noempty"       : true,   // Prohibit use of empty blocks.
     "nonew"         : true,   // Prohibit use of constructors for side-effects.
