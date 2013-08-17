@@ -9,6 +9,8 @@
 
 set -e
 
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
 function check_if_update() {
   parent_dir=$(basename $(pwd))
   if [[ $parent_dir = "dotfiles" ]]; then
@@ -66,7 +68,7 @@ for f in "${dotfiles[@]}"; do
     cp -rf ~/$f ~/$f.old
   fi
   # And symlink it to the relative directory!
-  abs_path=$(bin/readlink-f $f)
+  abs_path=$("$DIR/bin/readlink-f" "$f")
   rel_path="${abs_path#$HOME/}"
   ln -sf $rel_path ~/$f
 done
