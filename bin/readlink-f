@@ -2,9 +2,18 @@
 #
 # Credit to http://stackoverflow.com/questions/1055671/how-can-i-get-the-behavior-of-gnus-readlink-f-on-a-mac
 
-# Fallback to actual readlink -f if it exists
-readlink -f "$1" &>/dev/null && (echo $(readlink -f "$1") || exit)
+set -e
 
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+# Fallback to actual readlink -f or greadlink -f if it exists
+readlink -f "$1" &>/dev/null && echo $(readlink -f "$1") && exit
+greadlink -f "$1" &>/dev/null && echo $(greadlink -f "$1") && exit
+
+# Use python if it is installed
+type python &>/dev/null && "$DIR/abspath" "$1" && exit
+
+# Otherwise, use this script, which doesn't deal well with all edge cases
 TARGET_FILE=$1
 
 cd `dirname $TARGET_FILE`
