@@ -1,0 +1,16 @@
+#!/bin/bash
+
+set -e
+
+bin_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+target_file="$1"
+cwd=$(pwd -P 2>/dev/null || command pwd)
+
+while [[ "`$bin_dir/readlink-f $cwd`" != "/" ]]; do
+  if [[ -e "$cwd/$target_file" ]]; then
+    break
+  fi
+  cwd="$cwd/.."
+done
+
+echo $("$bin_dir/readlink-f" "$cwd/$target_file")
