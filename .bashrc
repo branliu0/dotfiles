@@ -155,4 +155,8 @@ function mkcd() {
   mkdir -p $dir && cd $dir
 }
 
+function dj() {
+  python `find-up manage.py` "$@"
+}
+
 fi
