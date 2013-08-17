@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+# TODO:
 # - If there's a flag set, use SSH clone (low priority)
 # - Check that git dependency is set (low priority)
 # - Ask for confirmation for each symlink
@@ -65,7 +66,7 @@ for f in "${dotfiles[@]}"; do
     cp -rf ~/$f ~/$f.old
   fi
   # And symlink it to the relative directory!
-  abs_path=$(readlink -f $f)
+  abs_path=$(bin/readlink-f $f)
   rel_path="${abs_path#$HOME/}"
   ln -sf $rel_path ~/$f
 done
