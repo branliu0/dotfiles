@@ -20,6 +20,12 @@ function __hg_branch {
   hg branch 2> /dev/null | awk '{print " (" $1 ")"}'
 }
 
+function __virtualenv {
+  if [[ -n "$VIRTUAL_ENV" ]]; then
+    echo " (venv)"
+  fi
+}
+
 set_prompt () {
   if [ $? -ne 0 ]; then
     ERR='($?) '
@@ -62,7 +68,7 @@ set_prompt () {
 	GIT_PS1_SHOWDIRTYSTATE=1
 
 	PS1="
-$EMB\u@\h:\w ${R}$ERR$R[\$(__ruby_version)]$M\$(__git_ps1)\$(__hg_branch)
+$EMB\u@\h:\w ${R}$ERR$R[\$(__ruby_version)]$M\$(__git_ps1)\$(__hg_branch)$EMY\$(__virtualenv)$NONE
 $C`date +%D` \t \$$NONE "
 }
 
