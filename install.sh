@@ -49,7 +49,7 @@ echo Downloading and installing...
 git clone --quiet https://github.com/thenovices/dotfiles.git dotfiles
 cd dotfiles
 
-# Build up a list of all the dotfiles (ignoring .git)
+# Build up a list of all the dotfiles (ignoring .git and .gitignore)
 dotfiles=()
 for f in $(find . -maxdepth 1 -name ".[^.]*" -exec basename {} \; | \
     grep -vE ".git(ignore)?$"); do

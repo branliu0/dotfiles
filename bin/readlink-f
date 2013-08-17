@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # Credit to http://stackoverflow.com/questions/1055671/how-can-i-get-the-behavior-of-gnus-readlink-f-on-a-mac
 
