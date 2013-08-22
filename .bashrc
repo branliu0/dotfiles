@@ -65,9 +65,9 @@ set_prompt () {
   local BGC="\[\033[46m\]"
   local BGW="\[\033[47m\]"
 
-	GIT_PS1_SHOWDIRTYSTATE=1
+  GIT_PS1_SHOWDIRTYSTATE=1
 
-	PS1="
+  PS1="
 $EMB\u@\h:\w ${R}$ERR$R[\$(__ruby_version)]$M\$(__git_ps1)\$(__hg_branch)$EMY\$(__virtualenv)$NONE
 $C`date +%D` \t \$$NONE "
 }
@@ -107,8 +107,8 @@ alias gcm='git commit -m'
 alias gd='git_diff'
 alias gfo='git fetch origin'
 alias gh='git hist'
-alias gph='git push heroku master'
-alias gpo='git push origin master'
+alias gph='git push heroku'
+alias gpo='git push origin'
 alias gr='git rebase'
 alias grm='git rebase master'
 alias grom='git rebase origin/master'
@@ -133,7 +133,7 @@ export PYTHONSTARTUP=~/.pystartup
 export GREP_COLORS=auto
 
 if [[ -e ~/.bashrc.local ]]; then
-	source ~/.bashrc.local
+  source ~/.bashrc.local
 fi
 
 source $HOME/.bash/completion.bash
