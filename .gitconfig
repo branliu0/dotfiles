@@ -6,83 +6,86 @@
   user = thenovices
 
 [user]
-	name = Brandon Liu
-	email = brandon.k.liu@gmail.com
+  name = Brandon Liu
+  email = brandon.k.liu@gmail.com
 
 [core]
   editor = /usr/bin/vim
-	excludesfile = ~/.cvsignore
+  excludesfile = ~/.cvsignore
 
 ### colors are meant for a dark terminal
 [color]
-	ui = auto
-	diff = auto
-	status = auto
-	branch = auto
-	interactive = auto
+  ui = auto
+  diff = auto
+  status = auto
+  branch = auto
+  interactive = auto
 [color "branch"]
-	current = white blue bold
-	local  = blue
-	remote = green
+  current = white blue bold
+  local  = blue
+  remote = green
 [color "diff"]
-	plain = white
-	meta = yellow bold
-	frag = magenta bold
-	old = red
-	new = green
-	whitespace = red blink
+  plain = white
+  meta = yellow bold
+  frag = magenta bold
+  old = red
+  new = green
+  whitespace = red blink
 [color "status"]
-	added = yellow
-	changed = green
-	untracked = cyan
+  added = yellow
+  changed = green
+  untracked = cyan
 
 [alias]
-	br = branch
-	bg = bisect good
-	bb = bisect bad
-	co = checkout
-	amend = commit --amend
-	incr = commit --amend -C HEAD
-	plus = commit --amend -a -C HEAD
-	gr = grep -i
-	ci = commit
-	di = diff
-	rb = rebase
+  br = branch
+  bg = bisect good
+  bb = bisect bad
+  co = checkout
+  amend = commit --amend
+  incr = commit --amend -C HEAD
+  plus = commit --amend -a -C HEAD
+  gr = grep -i
+  ci = commit
+  di = diff
+  rb = rebase
         rbi = rebase -i
         rbit = !git rebase -i `git merge-base HEAD trunk`
         dm = !git log -p -w --reverse HEAD...`git merge-base HEAD master`
-	st = status
-	su = status -uno
-	cp = cherry-pick
-	sh = !git-sh
-	# "garbage-collect branches" whose tips have been merged into trunk
-	gcbr = !git branch --no-color --no-track --merged trunk | sed 's/[ *]*//' | grep -v master | grep -v '(no branch)' | xargs -n1 git branch -D || exit 0
-	pg = push origin HEAD:refs/for/master
+  st = status
+  su = status -uno
+  cp = cherry-pick
+  sh = !git-sh
+  # "garbage-collect branches" whose tips have been merged into trunk
+  gcbr = !git branch --no-color --no-track --merged trunk | sed 's/[ *]*//' | grep -v master | grep -v '(no branch)' | xargs -n1 git branch -D || exit 0
+  pg = push origin HEAD:refs/for/master
   hist = log --pretty=format:\"%h %ad | %s%C(yellow)%d %C(white)[%an]\" --graph --date=short --all
 
 [svn]
-	followparent = true
+  followparent = true
         rmdir = true
 
 [log]
-	date = relative
+  date = relative
 [blame]
-	date = short
+  date = short
 [diff]
-	renames = true
-	mnemonicprefix = true
-	tool = vimdiff
-	#external = git_diff_wrapper
+  renames = true
+  mnemonicprefix = true
+  tool = vimdiff
+  #external = git_diff_wrapper
 [apply]
-	whitespace = strip
+  whitespace = strip
 [merge]
-	tool = emerge
+  tool = emerge
 [status]
-	relativePaths = false
+  relativePaths = false
 [web]
-	browser = lynx
+  browser = lynx
 [rebase]
-	stat = true
+  stat = true
 ## for perf reasons (sad), don't add the index-dirtiness state to bash PS1
 [bash]
-	showDirtyState = false
+  showDirtyState = false
+[push]
+  # Only push the current branch, instead of pushing all branches
+  default = current
