@@ -1,0 +1,9 @@
+# Always color
+--color
+
+--ignore-dir=venv/
+--ignore-dir=node_modules/
+
+--type-add=css=.scss
+--type-set=coffee=.coffee
+--type-set=json=.json
