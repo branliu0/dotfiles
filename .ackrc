@@ -1,9 +1,12 @@
 # Always color
 --color
 
+--pager=less -r
+
 --ignore-dir=venv/
 --ignore-dir=node_modules/
 
 --type-add=css=.scss
+--type-add=js=.coffee
 --type-set=coffee=.coffee
 --type-set=json=.json
