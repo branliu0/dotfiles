@@ -67,6 +67,9 @@ set_prompt () {
 
   GIT_PS1_SHOWDIRTYSTATE=1
 
+  # Set the tab title in iTerm2 to the PWD.
+  echo -ne "\033]0;${PWD/#$HOME/~}\007"
+
   PS1="
 $EMB\u@\h:\w ${R}$ERR$R[\$(__ruby_version)]$M\$(__git_ps1)\$(__hg_branch)$EMY\$(__virtualenv)$NONE
 $C`date +%D` \t \$$NONE "
