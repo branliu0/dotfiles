@@ -5,6 +5,7 @@
 
 --ignore-dir=venv/
 --ignore-dir=node_modules/
+--ignore-dir=.ropeproject/
 
 --type-add=css=.scss
 --type-add=js=.coffee
