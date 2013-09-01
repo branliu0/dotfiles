@@ -42,7 +42,6 @@ Bundle 'IndexedSearch'
 Bundle 'SearchComplete'
 " Simple plugin to view most recently used files
 Bundle 'mru.vim'
-Bundle 'kien/tabman.vim'
 Bundle 'bufexplorer.zip'
 Bundle 'airblade/vim-gitgutter'
 
@@ -65,7 +64,6 @@ Bundle 'ervandew/supertab'
 Bundle 'Shougo/neocomplcache'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-endwise'
-Bundle 'int3/vim-taglist-plus'
 Bundle 'matchit.zip'
 Bundle 'mattn/zencoding-vim'
 
@@ -103,6 +101,7 @@ Bundle 'bkad/CamelCaseMotion'
 " Integrations
 Bundle 'tpope/vim-fugitive'
 Bundle 'mileszs/ack.vim'
+Bundle 'majutsushi/tagbar'
 
 " Colors
 Bundle 'altercation/vim-colors-solarized'

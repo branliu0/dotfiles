@@ -39,11 +39,8 @@ vmap <Leader>a: :Tabularize /:\zs<CR>
 nmap <Leader>a, :Tabularize /,\zs<CR>
 vmap <Leader>a, :Tabularize /,\zs<CR>
 
-" taglist
-let g:Tlist_Ctags_Cmd = "all-ctags"
-let Tlist_WinWidth = 'auto'
-map <F4> :TlistToggle<CR>
-map <F8> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+" tagbar
+nmap <Leader>t :TagbarToggle<CR>
 
 " ZenCoding
 let g:user_zen_leader_key = '<c-t>'
