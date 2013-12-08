@@ -125,6 +125,7 @@ alias rs='rake spec'
 alias rspec='rspec --color --backtrace --format=documentation'
 alias tmux='tmux -2'
 alias tunnel='ssh -C2qTnN -D 8080 brandonkliu@brandonkliu.com'
+alias v='source venv/bin/activate'
 alias vi='vim'
 
 export EDITOR=vim
