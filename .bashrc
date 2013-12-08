@@ -15,7 +15,7 @@ shopt -s checkwinsize
 function __ruby_version {
   ver=$(ruby -v 2> /dev/null | cut -d' ' -f 2)
   if [[ -n $ver ]]; then
-    echo "[$ver] "
+    echo "[$ver]"
   fi
 }
 
