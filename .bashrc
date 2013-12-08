@@ -123,17 +123,13 @@ alias rm='rm -i'
 alias rs='rake spec'
 alias rspec='rspec --color --backtrace --format=documentation'
 alias tmux='tmux -2'
+alias tunnel='ssh -C2qTnN -D 8080 brandonkliu@brandonkliu.com'
 alias vi='vim'
 
-alias tunnel='ssh -C2qTnN -D 8080 brandonkliu@brandonkliu.com'
-
 export EDITOR=vim
-
+export GREP_COLORS=auto # Turn on colors for grep
 export PATH=/usr/local/sbin:/usr/local/bin:~/bin:~/opt/bin:$PATH:~/dotfiles/bin
 export PYTHONSTARTUP=~/.pystartup
-
-# Turn on colors for grep
-export GREP_COLORS=auto
 
 if [[ -e ~/.bashrc.local ]]; then
   source ~/.bashrc.local
