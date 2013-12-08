@@ -13,7 +13,10 @@ shopt -s checkwinsize
 [ -x /usr/bin/lesspipe ] && eval "$(lesspipe)"
 
 function __ruby_version {
-  echo $(which ruby >/dev/null && ruby -v | cut -d' ' -f 2)
+  ver=$(ruby -v 2> /dev/null | cut -d' ' -f 2)
+  if [[ -n $ver ]]; then
+    echo "[$ver] "
+  fi
 }
 
 function __hg_branch {
@@ -71,7 +74,7 @@ set_prompt () {
   echo -ne "\033]0;${PWD/#$HOME/~}\007"
 
   PS1="
-$EMB\u@\h:\w ${R}$ERR$R[\$(__ruby_version)]$M\$(__git_ps1)\$(__hg_branch)$EMY\$(__virtualenv)$NONE
+$EMB\u@\h:\w ${R}$ERR$R$(__ruby_version)$M\$(__git_ps1)\$(__hg_branch)$EMY\$(__virtualenv)$NONE
 $C`date +%D` \t \$$NONE "
 }
 
