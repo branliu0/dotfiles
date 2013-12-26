@@ -95,6 +95,9 @@ Bundle 'slim-template/vim-slim'
 Bundle 'klen/python-mode'
 Bundle 'django.vim'
 
+Bundle 'guns/vim-clojure-static'
+Bundle 'tpope/vim-fireplace'
+
 " Vim Text Objects
 Bundle 'bkad/CamelCaseMotion'
 
