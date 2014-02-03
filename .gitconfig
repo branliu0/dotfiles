@@ -59,6 +59,7 @@
   gcbr = !git branch --no-color --no-track --merged trunk | sed 's/[ *]*//' | grep -v master | grep -v '(no branch)' | xargs -n1 git branch -D || exit 0
   pg = push origin HEAD:refs/for/master
   hist = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %C(bold white)[%an]%C(reset)%C(bold yellow)%d%C(reset)' --all
+  wd = diff --color-words
 
 [svn]
   followparent = true
