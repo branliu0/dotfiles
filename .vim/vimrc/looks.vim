@@ -6,6 +6,7 @@ if has("gui_running")
   "colors zenburn
   "colors lucius
   colors jellybeans
+  " colors badwolf
   set lines=70
   set columns=130
   " Remove scrollbars, toolbars, etc.

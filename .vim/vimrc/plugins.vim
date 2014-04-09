@@ -58,14 +58,11 @@ Bundle 'godlygeek/tabular'
 Bundle 'Raimondi/delimitMate'
 " Syntax checking in Vim!
 Bundle 'scrooloose/syntastic'
-" Perform all vim insert mode completions with Tab!
-Bundle 'ervandew/supertab'
-" Ultimate auto-completion system for Vim
-Bundle 'Shougo/neocomplcache'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-endwise'
 Bundle 'matchit.zip'
 Bundle 'mattn/zencoding-vim'
+Bundle 'Valloric/YouCompleteMe'
 
 " snipMate
 Bundle 'garbas/vim-snipmate'
@@ -105,9 +102,11 @@ Bundle 'bkad/CamelCaseMotion'
 Bundle 'tpope/vim-fugitive'
 Bundle 'mileszs/ack.vim'
 Bundle 'majutsushi/tagbar'
+Bundle 'tpope/vim-classpath'
 
 " Colors
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'sjl/badwolf'
 
 " Utilities, Dependencies
 Bundle 'L9'
