@@ -6,7 +6,7 @@ au BufNewFile,BufRead *.dot set list smartindent
 au BufNewFile,BufRead Gemfile,*.ru set ft=ruby
 au BufNewFile,BufRead *.js setlocal ts=2 sts=2 sw=2 expandtab
 au BufNewFile,BufRead *.md set nolist
-au BufNewFile,BufRead *.ml set tw=0 " No automatic line wrapping
+au BufNewFile,BufRead *.ml set tw=0 wrapmargin=0 " No automatic line wrapping
 au BufNewFile,BufRead *.otl set ft=vo_base nolist noexpandtab smartindent tw=100
 au BufNewFile,BufRead *.otl colors vo_dark
 au BufNewFile,BufRead *.php,*.phpt,*.htm,*.html set ts=2 sts=2 sw=2 expandtab
