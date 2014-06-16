@@ -23,7 +23,7 @@ Bundle 'kien/ctrlp.vim'
 " --- UI enhancements ---
 " -----------------------
 " Highlight levels of indentation
-Bundle 'mutewinter/vim-indent-guides'
+Bundle 'nathanaelkane/vim-indent-guides'
 " File explorer within Vim
 Bundle 'scrooloose/nerdtree'
 " Ultimate Vim statusline utility
