@@ -12,6 +12,7 @@
 [core]
   editor = /usr/bin/vim
   excludesfile = ~/.cvsignore
+  attributesfile = ~/.gitattributes
 
 ### colors are meant for a dark terminal
 [color]
