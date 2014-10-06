@@ -28,8 +28,8 @@ au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
 " Syntastic
-let g:syntastic_javascript_checker = 'jshint'
-let g:syntastic_python_checkers = ['pyflakes']
+let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_python_checkers = ['flake8']
 
 " Tabularize
 nmap <Leader>a= :Tabularize /=\zs<CR>
