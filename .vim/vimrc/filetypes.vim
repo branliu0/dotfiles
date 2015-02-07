@@ -16,6 +16,7 @@ au BufNewFile,BufRead *.s{a,c}ss syntax cluster sassCssAttributes add=@cssColors
 au BufNewFile,BufRead *.slim set ft=slim
 au BufNewFile,BufRead *.sls set ft=yaml
 au BufNewFile,BufRead *.tex set nolist
+au BufNewFile,BufRead *.thor set ft=ruby
 au BufNewFile,BufRead *.tt,*.tt2 set ft=tt2html ts=2 sts=2 sw=2 expandtab
 au BufReadPost fugitive://* set bufhidden=delete
 
