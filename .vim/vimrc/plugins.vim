@@ -22,8 +22,6 @@ Bundle 'kien/ctrlp.vim'
 " -----------------------
 " --- UI enhancements ---
 " -----------------------
-" Highlight levels of indentation
-Bundle 'nathanaelkane/vim-indent-guides'
 " File explorer within Vim
 Bundle 'scrooloose/nerdtree'
 " Ultimate Vim statusline utility
@@ -61,7 +59,6 @@ Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-endwise'
 Bundle 'matchit.zip'
-Bundle 'mattn/zencoding-vim'
 Bundle 'Valloric/YouCompleteMe'
 
 " snipMate
