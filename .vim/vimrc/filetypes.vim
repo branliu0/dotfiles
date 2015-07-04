@@ -29,4 +29,8 @@ autocmd FileType ruby noremap <C-N> :w<CR>:!/usr/bin/env ruby %<CR>
 " \m to run current file in Ruby
 autocmd FileType ruby noremap <Leader>m :w<CR>:!/usr/bin/env ruby -c %<CR>
 
+" Getting serious performance issues when automatic folding is on.
+" If still want folding, install FastFold: https://github.com/Konfekt/FastFold
+autocmd FileType ruby set foldmethod=manual
+
 let g:haskell_indent_if = 2
