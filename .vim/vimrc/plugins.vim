@@ -42,6 +42,8 @@ Bundle 'SearchComplete'
 Bundle 'mru.vim'
 Bundle 'bufexplorer.zip'
 Bundle 'airblade/vim-gitgutter'
+" Adds visualizations for vim marks
+Bundle 'kshenoy/vim-signature'
 
 " ----------------------------
 " --- Editing enhancements ---
