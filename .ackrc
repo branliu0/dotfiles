@@ -6,6 +6,9 @@
 --ignore-dir=venv/
 --ignore-dir=node_modules/
 --ignore-dir=.ropeproject/
+--ignore-dir=public/assets/
+--ignore-dir=log/
+--ignore-dir=vendor/maps
 
 --type-add=css=.scss
 --type-add=js=.coffee
