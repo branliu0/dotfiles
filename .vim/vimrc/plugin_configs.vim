@@ -19,6 +19,8 @@ map <Leader>n :NERDTreeFind<cr>
 
 " Python-mode
 let g:pymode_lint_write = 0
+let g:pymode_rope_complete_on_dot = 0  " Please don't do autocomplete...
+let g:pymode_options_max_line_length = 120
 
 " Rainbow Parentheses
 " Always on
