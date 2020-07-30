@@ -8,6 +8,7 @@
 [user]
   name = Brandon Liu
   email = brandon.k.liu@gmail.com
+	signingkey = D65340EDC8C030A8
 
 [core]
   editor = /usr/bin/vim
@@ -91,3 +92,9 @@
 [push]
   # Only push the current branch, instead of pushing all branches
   default = current
+[commit]
+	gpgsign = true
+[gpg]
+	program = gpg
+[pull]
+	ff = only
