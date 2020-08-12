@@ -113,6 +113,9 @@ alias gcm='git commit -m'
 alias gd='git_diff'
 alias gfo='git fetch origin'
 alias gh='git hist'
+alias gm='git merge'
+alias gmff='git merge --ff-only'
+alias go='git checkout'
 alias gph='git push heroku'
 alias gpo='git push origin'
 alias gr='git rebase'
@@ -134,6 +137,18 @@ alias tmux='tmux -2'
 alias tunnel='ssh -C2qTnN -D 8080 brandonkliu@brandonkliu.com'
 alias v='source venv/bin/activate'
 alias vi='vim'
+
+# Git completion and handle aliases
+if [ -r "/usr/local/etc/profile.d/bash_completion.sh"  ]; then
+  source "/usr/local/etc/profile.d/bash_completion.sh" 
+
+  # Add git completion to aliases
+  __git_complete g __git_main
+  __git_complete go _git_checkout
+  __git_complete gm __git_merge
+else
+  echo "git bash completion not installed."
+fi
 
 export EDITOR=vim
 export GREP_COLORS=auto # Turn on colors for grep
