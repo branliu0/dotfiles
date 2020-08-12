@@ -113,8 +113,7 @@ alias gcm='git commit -m'
 alias gd='git_diff'
 alias gfo='git fetch origin'
 alias gh='git hist'
-alias gm='git merge'
-alias gmff='git merge --ff-only'
+alias gm='git merge --ff-only'
 alias go='git checkout'
 alias gph='git push heroku'
 alias gpo='git push origin'
@@ -143,9 +142,9 @@ if [ -r "/usr/local/etc/profile.d/bash_completion.sh"  ]; then
   source "/usr/local/etc/profile.d/bash_completion.sh" 
 
   # Add git completion to aliases
-  __git_complete g __git_main
+  __git_complete g _git_main
   __git_complete go _git_checkout
-  __git_complete gm __git_merge
+  __git_complete gm _git_merge
 else
   echo "git bash completion not installed."
 fi
