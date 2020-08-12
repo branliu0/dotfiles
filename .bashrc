@@ -142,7 +142,7 @@ if [ -r "/usr/local/etc/profile.d/bash_completion.sh"  ]; then
   source "/usr/local/etc/profile.d/bash_completion.sh" 
 
   # Add git completion to aliases
-  __git_complete g _git_main
+  __git_complete g __git_main
   __git_complete go _git_checkout
   __git_complete gm _git_merge
 else
