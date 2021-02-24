@@ -115,6 +115,7 @@ alias gfo='git fetch origin'
 alias gh='git hist'
 alias gm='git merge --ff-only'
 alias go='git checkout'
+alias gp='git pull'
 alias gph='git push heroku'
 alias gpo='git push origin'
 alias gr='git rebase'
@@ -159,10 +160,6 @@ if [[ -e ~/.bashrc.local ]]; then
 fi
 
 source $HOME/.bash/completion.bash
-
-if [[ -e /usr/local/etc/bash_completion ]]; then
-  source /usr/local/etc/bash_completion
-fi
 
 function git_diff() {
   git diff --no-ext-diff -w "$@" | vim -R -

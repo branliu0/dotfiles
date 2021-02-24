@@ -8,7 +8,7 @@
 [user]
   name = Brandon Liu
   email = brandon.k.liu@gmail.com
-	signingkey = D65340EDC8C030A8
+  signingkey = D65340EDC8C030A8
 
 [core]
   editor = /usr/bin/vim
@@ -50,9 +50,10 @@
   ci = commit
   di = diff
   rb = rebase
-        rbi = rebase -i
-        rbit = !git rebase -i `git merge-base HEAD trunk`
-        dm = !git log -p -w --reverse HEAD...`git merge-base HEAD master`
+  rbi = rebase -i
+  rbc = rebase --continue
+  rbit = !git rebase -i `git merge-base HEAD trunk`
+  dm = !git log -p -w --reverse HEAD...`git merge-base HEAD master`
   st = status
   su = status -uno
   cp = cherry-pick
