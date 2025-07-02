@@ -8,12 +8,21 @@
 [user]
   name = Brandon Liu
   email = brandon.k.liu@gmail.com
-  signingkey = D65340EDC8C030A8
+	signingkey = E60356E4A210C802
 
 [core]
   editor = /usr/bin/vim
   excludesfile = ~/.cvsignore
   attributesfile = ~/.gitattributes
+  pager = delta  # https://github.com/dandavison/delta
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+  navigate = true  # use n and N to move between diff sections
+  line-numbers = true
+  # side-by-side = true
 
 ### colors are meant for a dark terminal
 [color]
@@ -76,11 +85,13 @@
   renames = true
   mnemonicprefix = true
   tool = vimdiff
+  colorMoved = default
   #external = git_diff_wrapper
 [apply]
   whitespace = strip
 [merge]
-  tool = emerge
+  # tool = emerge
+  conflictstyle = diff3
 [status]
   relativePaths = false
 [web]
@@ -99,3 +110,8 @@
 	program = gpg
 [pull]
 	ff = only
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

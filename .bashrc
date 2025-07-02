@@ -19,6 +19,13 @@ function __ruby_version {
   fi
 }
 
+function __python_version {
+  ver=$(python -V 2>/dev/null | cut -d' ' -f2)
+  if [[ -n $ver ]]; then
+    echo "[🐍 $ver]"
+  fi
+}
+
 function __hg_branch {
   hg branch 2> /dev/null | awk '{print " (" $1 ")"}'
 }
@@ -27,14 +34,24 @@ function __virtualenv {
   if [[ -n "$VIRTUAL_ENV" ]]; then
     echo " (venv)"
   fi
+  if [[ -n "$CONDA_PROMPT_MODIFIER" ]]; then
+    echo " $CONDA_PROMPT_MODIFIER"
+  fi
+}
+
+function __k8s_context {
+  if command -v kubectl &> /dev/null; then
+    echo " (⎈ $(kubectl config current-context))"
+  fi
 }
 
 set_prompt () {
-  if [ $? -ne 0 ]; then
-    ERR='($?) '
-  else
-    ERR=""
-  fi
+  local errcode=$?
+  # if [[ "$errcode" -ne 0 ]]; then
+    # ERR="[$errcode] "
+  # else
+    # ERR=""
+  # fi
 
   local NONE="\[\033[0m\]"    # unsets color to term's fg color
 
@@ -74,7 +91,7 @@ set_prompt () {
   echo -ne "\033]0;${PWD/#$HOME/~}\007"
 
   PS1="
-$EMB\u@\h:\w ${R}$ERR$R$(__ruby_version)$M\$(__git_ps1)\$(__hg_branch)$EMY\$(__virtualenv)$NONE
+$EMB\u@\h:\w ${R}[$errcode] $G$(__python_version)$M\$(__git_ps1)\$(__hg_branch)$EMY\$(__virtualenv)$C\$(__k8s_context)$NONE
 $C`date +%D` \t \$$NONE "
 }
 
@@ -118,6 +135,7 @@ alias go='git checkout'
 alias gp='git pull'
 alias gph='git push heroku'
 alias gpo='git push origin'
+alias gpp='git pull --prune'
 alias gr='git rebase'
 alias grm='git rebase master'
 alias grom='git rebase origin/master'
@@ -125,6 +143,7 @@ alias gs='git status'
 alias hdj='heroku run python manage.py'
 alias hr='heroku run'
 type hub &> /dev/null && alias git='hub'
+alias k='kubectl'
 alias mvimcp='open -a Macvim .'
 alias npm-exec='PATH=$(npm bin):$PATH'
 alias ppjson='python -mjson.tool'
@@ -135,12 +154,32 @@ alias rspec='rspec --color --backtrace --format=documentation'
 alias t='column -t'
 alias tmux='tmux -2'
 alias tunnel='ssh -C2qTnN -D 8080 brandonkliu@brandonkliu.com'
-alias v='source venv/bin/activate'
+alias v='source .venv/bin/activate'
 alias vi='vim'
 
+# kubectl aliases
+alias k="kubectl"
+alias kd="kubectl describe"
+alias kev="kubectl get event --sort-by='{.metadata.creationTimestamp}'"
+alias kctx="kubectl config use-context"
+kj() { kubectl "$@" -o json | jq; }
+kjx() { kubectl "$@" -o json | fx; }
+ky() { kubectl "$@" -o yaml | bat -l yaml --style plain; }
+
+
+# get KFP arguments passed to a given pod
+kfp-args() {
+  k get pod "$@" -o jsonpath='{.metadata.annotations}' \
+    | jq -r '."pipelines.kubeflow.org/arguments.parameters"' \
+    | jq .
+}
+
+
+
+
 # Git completion and handle aliases
-if [ -r "/usr/local/etc/profile.d/bash_completion.sh"  ]; then
-  source "/usr/local/etc/profile.d/bash_completion.sh" 
+if [ -f "$(brew --prefix)/etc/bash_completion.d/git-completion.bash" ]; then
+  source "$(brew --prefix)/etc/bash_completion.d/git-completion.bash"
 
   # Add git completion to aliases
   __git_complete g __git_main
@@ -152,7 +191,7 @@ fi
 
 export EDITOR=vim
 export GREP_COLORS=auto # Turn on colors for grep
-export PATH=/usr/local/sbin:/usr/local/bin:~/bin:~/opt/bin:$PATH:~/dotfiles/bin
+export PATH=/usr/local/sbin:~/bin:~/opt/bin:$PATH:~/dotfiles/bin
 export PYTHONSTARTUP=~/.pystartup
 
 if [[ -e ~/.bashrc.local ]]; then
@@ -176,6 +215,13 @@ function mkcd() {
 
 function dj() {
   python `find-up manage.py` "$@"
+}
+
+function gcs() {
+  # Hacky URL encoding
+  uri=$(echo "$@" | sed 's/^gs:\/\///' | sed 's/=/%3D/g' |  sed 's/ /%20/g')
+  url="https://console.cloud.google.com/storage/browser/$uri;tab=objects?authuser=0&project=bluerose-300816&pageState=(%22StorageObjectListTable%22:(%22f%22:%22%255B%255D%22))&prefix=&forceOnObjectsSortingFiltering=false"
+  open $url
 }
 
 fi
