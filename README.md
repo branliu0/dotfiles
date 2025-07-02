@@ -8,5 +8,5 @@ The installation script will automatically clone the git repository, symlink
 the dotfiles to your home directory, and install the vim plugins.
 
 ```bash
-$ bash < <(curl --silent https://raw.github.com/thenovices/dotfiles/master/install.sh)
+$ bash < <(curl --silent https://raw.github.com/branliu0/dotfiles/master/install.sh)
 ```
