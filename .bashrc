@@ -122,6 +122,7 @@ alias be='bundle exec'
 alias bi='bundle install'
 alias bir='bundle exec rake'
 alias cp='cp -i'
+alias debugpy="uv run python -Xfrozen_modules=off -m debugpy --wait-for-client --listen localhost:5678"
 alias g='git'
 alias ga='git add'
 alias gc='git commit'
