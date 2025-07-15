@@ -186,6 +186,12 @@ if [ -f "$(brew --prefix)/etc/bash_completion.d/git-completion.bash" ]; then
   __git_complete g __git_main
   __git_complete go _git_checkout
   __git_complete gm _git_merge
+elif [ -f "/usr/share/bash-completion/completions/git" ]; then
+  source /usr/share/bash-completion/completions/git
+
+  __git_complete g __git_main
+  __git_complete go _git_checkout
+  __git_complete gm _git_merge
 else
   echo "git bash completion not installed."
 fi
