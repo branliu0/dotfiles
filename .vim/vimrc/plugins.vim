@@ -26,8 +26,6 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/nerdtree'
 " Ultimate Vim statusline utility
 Bundle 'Lokaltog/vim-powerline'
-" Highlights the matching HTML tag
-Bundle 'gregsexton/MatchTag'
 " Rainbow parentheses!! :)
 Bundle 'kien/rainbow_parentheses.vim'
 
@@ -64,35 +62,35 @@ Bundle 'matchit.zip'
 " Bundle 'Valloric/YouCompleteMe'
 
 " snipMate
-Bundle 'garbas/vim-snipmate'
+" Bundle 'garbas/vim-snipmate'
 " snipMate dependences
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'tomtom/tlib_vim'
-Bundle 'scrooloose/snipmate-snippets'
+" Bundle 'MarcWeber/vim-addon-mw-utils'
+" Bundle 'tomtom/tlib_vim'
+" Bundle 'scrooloose/snipmate-snippets'
 
 " Language support
 Bundle 'tpope/vim-rails'
 Bundle 'vim-ruby/vim-ruby'
-Bundle 'tpope/vim-haml'
+" Bundle 'tpope/vim-haml'
 Bundle 'pangloss/vim-javascript'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'itspriddle/vim-jquery'
+" Bundle 'kchmck/vim-coffee-script'
+" Bundle 'itspriddle/vim-jquery'
 Bundle 'leshill/vim-json'
 Bundle 'tpope/vim-markdown'
 Bundle 'vimoutliner/vimoutliner'
-Bundle 'wannesm/wmgraphviz.vim'
+" Bundle 'wannesm/wmgraphviz.vim'
 Bundle 'omlet.vim'
 Bundle 'jcf/vim-latex'
 Bundle 'vim-scripts/haskell.vim'
-Bundle 'spf13/PIV'
+" Bundle 'spf13/PIV'
 Bundle 'othree/html5.vim'
 Bundle 'groenewege/vim-less'
 Bundle 'slim-template/vim-slim'
 Bundle 'klen/python-mode'
-Bundle 'django.vim'
+" Bundle 'django.vim'
 
-Bundle 'guns/vim-clojure-static'
-Bundle 'tpope/vim-fireplace'
+" Bundle 'guns/vim-clojure-static'
+" Bundle 'tpope/vim-fireplace'
 
 " Vim Text Objects
 Bundle 'bkad/CamelCaseMotion'
